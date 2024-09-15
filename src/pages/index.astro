@@ -26,22 +26,22 @@ const projects = (await getCollection('work'))
 ---
 
 <BaseLayout>
-  <div class="stack gap-20 lg:gap-48">
-    <div class="wrapper stack gap-8 lg:gap-20">
+  <div class="flex flex-col gap-20 lg:gap-48">
+    <div class="wrapper flex flex-col gap-8 lg:gap-20">
       <header class="hero">
         <Hero
           title="Web developer."
           tagline="Hi! I'm web developer who likes to craft solid products with great user experiences."
         >
-          <div class="flex mt-5 text-base">
-            <span><Icon icon="ui" size="1.5rem" />I'm proeficient in building frontends with modern technologies.</span>
-            <span class="ml-14"
-              ><Icon icon="code" size="1.5rem" />I'm also skilled in backend development, with a focus on writing clean
-              and easily understandable code.</span
+          <div class="flex mt-7 text-base">
+            <span class="flex-1"><Icon icon="ui" size="1.5rem" />I'm proeficient in building responsive user interfaces with modern frontend technologies.</span>
+            <span class="flex-1"
+              ><Icon icon="code" size="1.5rem" />I'm also skilled in backend development, with focus on writing clean
+              and understandable code.</span
             >
           </div>
 
-          <img src="/assets/scratch.svg" class="absolute scratch-image" />
+          <!-- <img src="/assets/scratch.svg" class="absolute scratch-image" /> -->
         </Hero>
 
         <img
@@ -56,9 +56,9 @@ const projects = (await getCollection('work'))
       <Skills />
     </div>
 
-    <main class="wrapper stack gap-20 lg:gap-48">
+    <main class="wrapper flex flex-col gap-20 lg:gap-48">
       <section class="section with-background with-cta">
-        <header class="section-header stack gap-2 lg:gap-4">
+        <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h3>Selected Work</h3>
           <p>Take a look below at some of my featured work for clients from the past few years.</p>
         </header>
@@ -84,7 +84,7 @@ const projects = (await getCollection('work'))
       </section>
 
       <section class="section with-background bg-variant">
-        <header class="section-header stack gap-2 lg:gap-4">
+        <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h3>Mentions</h3>
           <p>
             I have been fortunate enough to receive praise for my work in several publications. Take a look below to
