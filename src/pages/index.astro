@@ -33,7 +33,7 @@ const projects = (await getCollection('work'))
           title="Web developer."
           tagline="Hi! I'm web developer who likes to craft solid products with great user experiences."
         >
-          <div class="flex mt-7 text-base">
+          <div class="flex mt-9 text-base">
             <span class="flex-1"
               ><Icon icon="ui" size="1.5rem" />I'm proeficient in building responsive user interfaces with modern
               frontend technologies.</span
@@ -63,7 +63,7 @@ const projects = (await getCollection('work'))
       <section class="section with-background with-cta">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">My resume</h2>
-          <p>There are my job experiences.</p>
+          <p>There is timeline of my work experiences.</p>
         </header>
 
         <div class="gallery">
@@ -71,78 +71,100 @@ const projects = (await getCollection('work'))
             <div class="relative wrap overflow-hidden p-10 h-full">
               <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
 
-              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full mt-4">
                 <div class="order-1 w-5/12"></div>
-                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 class="mx-auto text-white font-semibold text-lg">3</h1>
+                <div
+                  class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20"
+                >
+                  <h1 class="text-lg text-white font-semibold">5</h1>
                 </div>
-                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 class="mb-3 font-bold text-white text-xl">YD IT Labs</h3>
-                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                <div
+                  class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300"
+                >
+                  <h3 class="mb-3 font-bold text-xl text-purple-500">Bonu.sk</h3>
+									<p class="italic text-sm text-gray-400 mb-3">May 2024 – present</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">
+                    I graduated in Information Technology at VŠB from 2017 to 2021, where I gained a deep understanding
+                    of software development and web.
                   </p>
                 </div>
               </div>
               <!-- right timeline -->
-              <div class="mb-8 flex justify-between items-center w-full right-timeline">
+              <div class="mb-8 flex justify-between items-center w-full">
                 <div class="order-1 w-5/12"></div>
-                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 class="mx-auto font-semibold text-lg text-white">4</h1>
+                <div
+                  class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20"
+                >
+                  <h1 class="text-lg text-white font-semibold">4</h1>
                 </div>
-                <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 class="mb-3 font-bold text-gray-800 text-xl">Bonu.sk</h3>
-                  <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                <div
+                  class="order-1 bg-gray-700 dark:bg-gray-800 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-gray-600 transition duration-300"
+                >
+                  <h3 class="mb-3 font-bold text-xl text-purple-500">YD IT Labs</h3>
+									<p class="italic text-sm text-gray-400 mb-3">May 2021 - present</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">
+                    I graduated in Information Technology at VŠB from 2017 to 2021, where I gained a deep understanding
+                    of software development and web.
                   </p>
                 </div>
               </div>
 
               <!-- left timeline -->
-              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
                 <div class="order-1 w-5/12"></div>
-                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 class="mx-auto text-white font-semibold text-lg">3</h1>
+                <div
+                  class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20"
+                >
+                  <h1 class="text-lg text-white font-semibold">3</h1>
                 </div>
-                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 class="mb-3 font-bold text-white text-xl">LinuxBox</h3>
-                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                <div
+                  class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300"
+                >
+                  <h3 class="mb-3 font-bold text-xl text-purple-500">LinuxBox</h3>
+									<p class="italic text-sm text-gray-400 mb-3">Jul 2020 – Apr 2021</p>
+                  <p class="text-gray-300 leading-relaxed text-sm">
+                    I graduated in Information Technology at VŠB from 2017 to 2021, where I gained a deep understanding
+                    of software development and web.
                   </p>
                 </div>
               </div>
 
               <!-- right timeline -->
-              <div class="mb-8 flex justify-between items-center w-full right-timeline">
+              <div class="mb-8 flex justify-between items-center w-full">
                 <div class="order-1 w-5/12"></div>
-                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
+                <div
+                  class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20"
+                >
+                  <h1 class="text-lg text-white font-semibold">2</h1>
                 </div>
-                <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 class="mb-3 font-bold text-gray-800 text-xl">Moravio</h3>
-                  <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                <div
+                  class="order-1 bg-gray-700 dark:bg-gray-800 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-gray-600 transition duration-300"
+                >
+                  <h3 class="mb-3 font-bold text-xl text-purple-500">Moravio</h3>
+									<p class="italic text-sm text-gray-400 mb-3">May 2019 – Jan 2020</p>
+                  <p class="text-gray-300 text-sm leading-relaxed text-sm">
+                    I graduated in Information Technology at VŠB from 2017 to 2021, where I gained a deep understanding
+                    of software development and web.
                   </p>
                 </div>
               </div>
 
               <!-- left timeline -->
-              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
                 <div class="order-1 w-5/12"></div>
-                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 class="mx-auto text-white font-semibold text-lg">1</h1>
+                <div
+                  class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20"
+                >
+                  <h1 class="text-lg text-white font-semibold">1</h1>
                 </div>
-                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 class="mb-3 font-bold text-white text-xl">VŠB – Technical University of Ostrava</h3>
-                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
-										I graduated at Information Technology at VŠB – Technical University of Ostrava from 2017 to 2021, where I gained a deep understanding of software development and web. I learned basic computer science skills, how to work with SQL and how computer works on low level.
+                <div
+                  class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300"
+                >
+                  <h3 class="mb-3 font-bold text-xl text-purple-500">VŠB – Technical University of Ostrava</h3>
+									<p class="italic text-sm text-gray-400 mb-3">2017 – 2021</p>
+                  <p class="text-gray-300 leading-relaxed text-sm">
+                    I graduated in Information Technology at VŠB from 2017 to 2021, where I gained a deep understanding
+                    of software development and web.
                   </p>
                 </div>
               </div>
@@ -341,6 +363,11 @@ const projects = (await getCollection('work'))
     color: var(--gray-300);
     background: var(--gradient-subtle);
     box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+  }
+
+  .mention-card:hover {
+    transform: translateY(-0.5rem);
   }
 
   @media (min-width: 50em) {
