@@ -60,12 +60,102 @@ const projects = (await getCollection('work'))
     </div>
 
     <main class="wrapper flex flex-col gap-20 lg:gap-48">
-      <section class="section with-background bg-variant">
+      <section class="section with-background with-cta">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">Tech stack</h2>
-          <p>There is list of my favorite technologies I enjoy work with.</p>
+          <h2 class="text-2xl">My resume</h2>
+          <p>There are my job experiences.</p>
         </header>
 
+        <div class="gallery">
+          <div class="container mx-auto w-full h-full">
+            <div class="relative wrap overflow-hidden p-10 h-full">
+              <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
+
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 class="mx-auto text-white font-semibold text-lg">3</h1>
+                </div>
+                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                  <h3 class="mb-3 font-bold text-white text-xl">YD IT Labs</h3>
+                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.
+                  </p>
+                </div>
+              </div>
+              <!-- right timeline -->
+              <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 class="mx-auto font-semibold text-lg text-white">4</h1>
+                </div>
+                <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                  <h3 class="mb-3 font-bold text-gray-800 text-xl">Bonu.sk</h3>
+                  <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.
+                  </p>
+                </div>
+              </div>
+
+              <!-- left timeline -->
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 class="mx-auto text-white font-semibold text-lg">3</h1>
+                </div>
+                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                  <h3 class="mb-3 font-bold text-white text-xl">LinuxBox</h3>
+                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.
+                  </p>
+                </div>
+              </div>
+
+              <!-- right timeline -->
+              <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
+                </div>
+                <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                  <h3 class="mb-3 font-bold text-gray-800 text-xl">Moravio</h3>
+                  <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.
+                  </p>
+                </div>
+              </div>
+
+              <!-- left timeline -->
+              <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 class="mx-auto text-white font-semibold text-lg">1</h1>
+                </div>
+                <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                  <h3 class="mb-3 font-bold text-white text-xl">VŠB – Technical University of Ostrava</h3>
+                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+										I graduated at Information Technology at VŠB – Technical University of Ostrava from 2017 to 2021, where I gained a deep understanding of software development and web. I learned basic computer science skills, how to work with SQL and how computer works on low level.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta self-end">
+          <CallToAction href="/work/">
+            Download my cv
+            <Icon icon="arrow-right" size="1.2em" />
+          </CallToAction>
+        </div>
       </section>
 
       <section class="section with-background bg-variant">
@@ -76,43 +166,42 @@ const projects = (await getCollection('work'))
 
         <div class="gallery">
           <Grid variant="small">
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/vue.svg" alt="Vue.js" />
-								<sub>Vue.js</sub>
-							</p>
-						</li>
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/ts.svg" alt="Typescript" />
-								<sub>Typescript</sub>
-							</p>
-						</li>
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/pg.svg" alt="Postgres" />
-								<sub>Postgres</sub>
-							</p>
-						</li>
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/js.png" alt="Postgres" />
-								<sub>JavaScript</sub>
-							</p>
-						</li>
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/node.svg" alt="Node.js" />
-								<sub>Node.js</sub>
-							</p>
-						</li>
-						<li class="mention-card">
-							<p>
-								<img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/kotlin.png" alt="Kotlin" />
-								<sub>Kotlin</sub>
-							</p>
-						</li>
-						
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/vue.svg" alt="Vue.js" />
+                <sub>Vue.js</sub>
+              </p>
+            </li>
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/ts.svg" alt="Typescript" />
+                <sub>Typescript</sub>
+              </p>
+            </li>
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/pg.svg" alt="Postgres" />
+                <sub>Postgres</sub>
+              </p>
+            </li>
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/js.png" alt="Postgres" />
+                <sub>JavaScript</sub>
+              </p>
+            </li>
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/node.svg" alt="Node.js" />
+                <sub>Node.js</sub>
+              </p>
+            </li>
+            <li class="mention-card">
+              <p>
+                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/kotlin.png" alt="Kotlin" />
+                <sub>Kotlin</sub>
+              </p>
+            </li>
           </Grid>
         </div>
       </section>
