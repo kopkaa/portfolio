@@ -122,7 +122,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			menu.classList.add('menu-content');
 
 			/** Set whether the menu is currently expanded or collapsed. */
-			const setExpanded = (expand) => {
+			const setExpanded = (expand: any) => {
 				btn.setAttribute('aria-expanded', expand ? 'true' : 'false');
 				menu.hidden = !expand;
 			};
@@ -131,7 +131,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			btn.addEventListener('click', () => setExpanded(menu.hidden));
 
 			// Hide menu button for large screens.
-			const handleViewports = (e) => {
+			const handleViewports = (e: any) => {
 				setExpanded(e.matches);
 				btn.hidden = e.matches;
 			};
