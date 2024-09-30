@@ -78,7 +78,7 @@ const jobs = await getCollection('work')
                     <div class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300">
                       <h3 class="mb-1 font-bold text-xl text-purple-500">{job.data.company}</h3>
                       <p class="italic text-sm text-gray-400 mb-3">{job.data.date}</p>
-                      <p class="text-gray-300 leading-relaxed text-sm">{job.data.description}</p>
+                      <p class="text-gray-300 leading-relaxed text-sm" set:html={job.data.description}></p>
                     </div>
                   </div>
                 ))
