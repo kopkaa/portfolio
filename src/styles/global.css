@@ -158,6 +158,12 @@ a {
 	padding-inline: 1.5rem;
 }
 
+@media (min-width: 1600px) {
+	.wrapper {
+		max-width: 97rem; /* Adjust this value as needed */
+	}
+}
+
 .stack {
 	display: flex;
 	flex-direction: column;
