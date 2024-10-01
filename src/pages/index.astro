@@ -15,38 +15,42 @@ import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 
 // Content Fetching: List four most recent work projects
-const jobs = await getCollection('work')
+const jobs = await getCollection('work');
+const stack = await getCollection('stack');
 ---
 
 <BaseLayout>
   <div class="flex flex-col gap-20 lg:gap-48">
     <div class="wrapper flex flex-col gap-8 lg:gap-20">
-			<header class="hero min-h-screen md:min-h-0 flex flex-col justify-center items-center text-center md:text-left md:flex-row">
-				<Hero
-					title="Web developer."
-					tagline="Hi! I'm a web developer who likes to craft solid products with great user experiences."
-				>
-					<div class="flex mt-9 text-base flex-col md:flex-row">
-						<span class="flex-1 mb-4 md:mb-0 md:mr-6">
-							<Icon icon="ui" size="1.5rem" />
-							I'm proficient in building responsive user interfaces with modern frontend technologies.
-						</span>
-						<span class="flex-1">
-							<Icon icon="code" size="1.5rem" />
-							I'm also skilled in backend development, with a focus on writing clean and understandable code.
-						</span>
-					</div>
-				</Hero>
-			
-				<img
-					class="profile-photo w-96 hover:cursor-pointer hidden md:block ml-none 2xl:ml-12"
-					alt="Jan Hromadka - profile photo"
-					width="480"
-					height="620"
-					src="/assets/me.jpg"
-				/>
-			</header>
+      <header
+        class="hero min-h-screen md:min-h-0 flex flex-col justify-center items-center text-center md:text-left md:flex-row"
+      >
+        <Hero
+          title="Web developer."
+          tagline="Hi! I'm a web developer who likes to craft solid products with great user experiences."
+        >
+          <div class="flex mt-9 text-base flex-col md:flex-row">
+            <span class="flex-1 mb-4 md:mb-0 md:mr-6">
+              <Icon icon="ui" size="1.5rem" />
+              I'm proficient in building responsive user interfaces with modern frontend technologies.
+            </span>
+            <span class="flex-1">
+              <Icon icon="code" size="1.5rem" />
+              I'm also skilled in backend development, with a focus on writing clean and understandable code.
+            </span>
+          </div>
+        </Hero>
 
+        <img
+          class="profile-photo w-96 hover:cursor-pointer hidden md:block ml-none 2xl:ml-12"
+          alt="Jan Hromadka - profile photo"
+          width="480"
+          height="620"
+          src="/assets/me.jpg"
+        />
+      </header>
+    </div>
+    <div class="wrapper">
       <Skills />
     </div>
 
@@ -57,32 +61,34 @@ const jobs = await getCollection('work')
           <p>There is timeline of my work experiences.</p>
         </header>
 
-				<div class="gallery">
-					<div class="container mx-auto w-full h-full">
-						<div class="relative wrap overflow-hidden p-4 md:p-10 h-full">
-							<div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-0 md:left-1/2"></div>
-				
-							{jobs.map((job, index) => (
-								<div
-									class={`mb-8 mt-3 flex flex-col md:flex-row justify-between items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-									key={index}
-								>
-									<div class="order-1 w-0 md:w-5/12" />
-				
-									<div class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20">
-										<h1 class="text-lg text-white font-semibold">{jobs.length - index}</h1>
-									</div>
-				
-									<div class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300">
-										<h3 class="mb-1 font-bold text-xl text-purple-500">{job.data.company}</h3>
-										<p class="italic text-sm text-gray-400 mb-3">{job.data.date}</p>
-										<p class="text-gray-300 leading-relaxed text-sm" set:html={job.data.description}></p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
+        <div class="gallery">
+          <div class="container mx-auto w-full h-full">
+            <div class="relative wrap overflow-hidden p-4 md:p-10 h-full">
+              <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-0 md:left-1/2"></div>
+
+              {
+                jobs.map((job, index) => (
+                  <div
+                    class={`mb-8 mt-3 flex flex-col md:flex-row justify-between items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                    key={index}
+                  >
+                    <div class="order-1 w-0 md:w-5/12" />
+
+                    <div class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20">
+                      <h1 class="text-lg text-white font-semibold">{jobs.length - index}</h1>
+                    </div>
+
+                    <div class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300">
+                      <h3 class="mb-1 font-bold text-xl text-purple-500">{job.data.company}</h3>
+                      <p class="italic text-sm text-gray-400 mb-3">{job.data.date}</p>
+                      <p class="text-gray-300 leading-relaxed text-sm" set:html={job.data.description} />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
 
         <div class="cta self-end">
           <CallToAction href="/work/">
@@ -100,42 +106,16 @@ const jobs = await getCollection('work')
 
         <div class="gallery">
           <Grid variant="small">
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/vue.svg" alt="Vue.js" />
-                <sub>Vue.js</sub>
-              </p>
-            </li>
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/ts.svg" alt="Typescript" />
-                <sub>Typescript</sub>
-              </p>
-            </li>
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/pg.svg" alt="Postgres" />
-                <sub>Postgres</sub>
-              </p>
-            </li>
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/js.png" alt="Postgres" />
-                <sub>JavaScript</sub>
-              </p>
-            </li>
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/node.svg" alt="Node.js" />
-                <sub>Node.js</sub>
-              </p>
-            </li>
-            <li class="mention-card">
-              <p>
-                <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src="/assets/tech/kotlin.png" alt="Kotlin" />
-                <sub>Kotlin</sub>
-              </p>
-            </li>
+            {
+              stack.map((s, index) => (
+                <li class="mention-card">
+                  <p>
+                    <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src={s.data.img} alt={s.data.title} />
+                    <sub>{s.data.title}</sub>
+                  </p>
+                </li>
+              ))
+            }
           </Grid>
         </div>
       </section>

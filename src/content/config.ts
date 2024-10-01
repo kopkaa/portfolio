@@ -9,4 +9,11 @@ export const collections = {
 			date: z.string(),
 		}),
 	}),
+	stack: defineCollection({
+		type: 'content',
+		schema: z.object({
+			title: z.string(),
+			img: z.string()
+		}),
+	}),
 };
