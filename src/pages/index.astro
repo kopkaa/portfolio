@@ -21,7 +21,7 @@ const stack = await getCollection('stack');
 
 <BaseLayout>
   <div class="flex flex-col gap-20 lg:gap-48">
-    <div class="wrapper flex flex-col gap-8 lg:gap-20">
+    <div class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]">
       <header
         class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-28 xl:mt-14" 
       >
@@ -54,7 +54,7 @@ const stack = await getCollection('stack');
       <Skills />
     </div>
 
-    <main class="wrapper flex flex-col gap-20 lg:gap-48">
+    <main class="wrapper flex flex-col gap-20 lg:gap-48 md:pt-0 pt-28">
       <section class="section with-background with-cta">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">My resume</h2>
@@ -70,7 +70,6 @@ const stack = await getCollection('stack');
                 jobs.map((job, index) => (
                   <div
                     class={`mb-8 mt-3 flex flex-col md:flex-row justify-between items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                    key={index}
                   >
                     <div class="order-1 w-0 md:w-5/12" />
 
@@ -98,7 +97,7 @@ const stack = await getCollection('stack');
         </div>
       </section>
 
-      <section class="section with-background bg-variant">
+      <section class="section with-background bg-variant md:pt-0 pt-28">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Tech stack</h2>
           <p>There is list of my favorite technologies I enjoy work with.</p>

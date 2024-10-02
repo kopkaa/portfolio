@@ -7,10 +7,10 @@ interface Props {
 const { tagline, title } = Astro.props;
 ---
 
-<div class='text-start text-lg flex flex-col gap-4'>
+<div class='text-start text-lg flex flex-col gap-4 mt-14 md:mt-0'>
 	<div class="flex flex-col gap-2 text-center md:text-start">
 		<h1 class="text-7xl font-extrabold font-rethink bg-gradient-to-r from-blue-600 via-purple-400 to-indigo-400 inline-block text-transparent bg-clip-text">{title}</h1>
-		{tagline && <p class="text-2xl mt-2">{tagline}</p>}
+		{tagline && <p class="md:text-2xl text-lg mt-2">{tagline}</p>}
 	</div>
 	<slot />
 </div>
