@@ -23,7 +23,7 @@ const stack = await getCollection('stack');
   <div class="flex flex-col gap-20 lg:gap-48">
     <div class="wrapper flex flex-col gap-8 lg:gap-20">
       <header
-        class="hero min-h-screen md:min-h-0 flex flex-col justify-center items-center text-center md:text-left md:flex-row"
+        class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-28 xl:mt-14" 
       >
         <Hero
           title="Web developer."
@@ -91,7 +91,7 @@ const stack = await getCollection('stack');
         </div>
 
         <div class="cta self-end">
-          <CallToAction href="/work/">
+          <CallToAction href="/assets/cv.pdf" download>
             Download my cv
             <Icon icon="download" size="1.4em" />
           </CallToAction>
