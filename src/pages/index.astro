@@ -132,6 +132,8 @@ const stack = await getCollection('stack');
     object-position: top;
     border-radius: 1.5rem;
     box-shadow: var(--shadow-md);
+		clip-path: inset(0 round 3rem);
+		overflow: visible;
   }
   .hero {
     display: flex;
@@ -148,9 +150,9 @@ const stack = await getCollection('stack');
     }
 
     .hero img {
-      aspect-ratio: 3 / 4;
-      border-radius: 4.5rem;
-      object-fit: cover;
+			aspect-ratio: 3 / 4;
+			border-radius: 4.5rem;
+			object-fit: cover;
     }
   }
 
