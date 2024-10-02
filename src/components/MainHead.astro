@@ -15,23 +15,33 @@ const { title = 'Jan Hromádka - Web Developer', description = 'Personal portfol
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Preload critical font styles -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
-  rel="stylesheet"
-/>
-<link
-  href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
-  rel="stylesheet"
   rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
   crossorigin
-  as="font"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
   rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
+  crossorigin
 />
 <script is:inline>
   // This code is inlined in the head to make dark mode instant & blocking.
