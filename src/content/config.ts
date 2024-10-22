@@ -16,4 +16,12 @@ export const collections = {
 			img: z.string()
 		}),
 	}),
+	projects: defineCollection({
+		type: 'content',
+		schema: z.object({
+			title: z.string(),
+			img: z.string(),
+			padding: z.boolean().optional(),
+		}),
+	}),
 };

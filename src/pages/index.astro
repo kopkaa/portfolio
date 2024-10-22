@@ -17,13 +17,14 @@ import Skills from '../components/Skills.astro';
 // Content Fetching: List four most recent work projects
 const jobs = await getCollection('work');
 const stack = await getCollection('stack');
+const projects = await getCollection('projects');
 ---
 
 <BaseLayout>
   <div class="flex flex-col gap-20 lg:gap-48">
     <div class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]">
       <header
-        class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-28 xl:mt-14" 
+        class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-28 xl:mt-14"
       >
         <Hero
           title="Web developer."
@@ -107,12 +108,39 @@ const stack = await getCollection('stack');
           <Grid variant="small">
             {
               stack.map((s, index) => (
-                <li class="mention-card">
+                <li class="mention-card card-box">
                   <p>
                     <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src={s.data.img} alt={s.data.title} />
                     <sub>{s.data.title}</sub>
                   </p>
                 </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+
+      <section class="section with-background bg-variant md:pt-0 pt-28">
+        <header class="section-header flex flex-col gap-2 lg:gap-4">
+          <h2 class="text-2xl">Projects and references</h2>
+          <p>Here are some projects I did or I have been a part of</p>
+        </header>
+
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              projects.map((project, index) => (
+                <div class="group relative w-full h-72 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 card-box cursor-pointer">
+                  <div
+                    class={`flex items-center justify-center h-full w-full bg-center bg-cover bg-no-repeat `}
+                    style={`background-image: url('${project.data.img}'); ${project.data.padding ? 'background-size: 80%' : ''} `}
+                  >
+                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                      <h3 class="text-white text-xl font-semibold text-center">{project.data.title}</h3>
+                    </div>
+                  </div>
+                  <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+                </div>
               ))
             }
           </Grid>
@@ -132,7 +160,7 @@ const stack = await getCollection('stack');
     object-position: top;
     border-radius: 1.5rem;
     box-shadow: var(--shadow-md);
-		overflow-clip-margin: unset;
+    overflow-clip-margin: unset;
   }
   .hero {
     display: flex;
@@ -149,9 +177,9 @@ const stack = await getCollection('stack');
     }
 
     .hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
+      aspect-ratio: 3 / 4;
+      border-radius: 4.5rem;
+      object-fit: cover;
     }
   }
 
@@ -238,17 +266,20 @@ const stack = await getCollection('stack');
 
   /* ====================================================== */
 
+  .card-box {
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
   .mention-card {
     display: flex;
     height: 7rem;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid var(--gray-800);
-    border-radius: 1.5rem;
-    color: var(--gray-300);
-    background: var(--gradient-subtle);
-    box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease;
   }
 
