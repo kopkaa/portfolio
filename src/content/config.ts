@@ -22,6 +22,7 @@ export const collections = {
 			title: z.string(),
 			img: z.string(),
 			description: z.string(),
+			tags: z.array(z.string()),
 			padding: z.boolean().optional(),
 		}),
 	}),
