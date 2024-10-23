@@ -8,6 +8,7 @@ description: |
 tags:
   - Vue.js
   - Kotlin
+  - Node.js
   - Micronaut
   - Postgres
   - Docker
@@ -53,12 +54,6 @@ We created multi-tenant application for signing and sending PDFs documents. Each
 
 ![Image Description](/assets/projects/yd/3.png)  
 <br>
-
-
-
-### My role
-
-I contributed to this project as a full-stack developer, focusing on both frontend and backend development. On the frontend, I built dynamic components using Vue.js with the Quasar framework, ensuring a seamless user experience. For the backend, I designed and implemented RESTful APIs using Kotlin and the Micronaut frameworks. Additionally, I managed integrations with various third-party APIs, including Raynet, Keycloak, and BankID, to ensure secure authentication and smooth data exchange.
 
 
 
