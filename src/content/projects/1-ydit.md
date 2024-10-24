@@ -15,7 +15,7 @@ tags:
   - AWS
 ---
 
-## YdealAppCloud
+## Project - YdealAppCloud
 
 The task was to create a modern, secure, and responsive client zone application that provides clients with a view of their portfolio while also enabling them to finalize and sign contractual documents fully online.
 

@@ -8,13 +8,13 @@ const projects = await getCollection('projects');
 ---
 
 <BaseLayout>
-      <section class="section with-background bg-variant md:py-20">
+      <section class="section with-background bg-variant md:py-20 px-6 md:px-0">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>
         </header>
 
-        <div class="gallery">
+        <div class="gallery pb-8 md:mb-0">
 					<Grid variant="small">
 						{
 							projects.map((project, index) => (
