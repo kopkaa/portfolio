@@ -33,7 +33,7 @@ const { Content } = await entry.render();
       <header>
         <div class="wrapper stack gap-2">
           <a class="back-link flex items-center md:mb-9 mb-0" href="/work/"><Icon icon="arrow-left"/> Work</a>
-          <Hero title={entry.data.title} align="start">
+          <Hero title={entry.data.title} align="start" titleSize="4xl">
             <div class="details">
               <div class="tags flex-wrap">
                 {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -64,10 +64,9 @@ const { Content } = await entry.render();
   .details {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 0.5rem 0rem;
     gap: 1.5rem;
     justify-content: space-between;
-    align-items: center;
   }
 
   .tags {

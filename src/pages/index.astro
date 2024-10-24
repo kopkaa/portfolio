@@ -21,10 +21,10 @@ const projects = await getCollection('projects');
 ---
 
 <BaseLayout>
-  <div class="flex flex-col gap-20 lg:gap-64">
+  <div class="flex flex-col md:gap-64">
     <div class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]">
       <header
-        class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-28 xl:mt-14"
+        class="hero flex flex-col justify-center items-center text-center md:text-left md:flex-row 2xl:mt-20 xl:mt-14"
       >
         <Hero
           title="Web developer."
@@ -51,11 +51,11 @@ const projects = await getCollection('projects');
         />
       </header>
     </div>
-    <div class="wrapper">
+    <div class="wrapper pb-10">
       <Skills />
     </div>
 
-    <main class="wrapper flex flex-col gap-20 lg:gap-72 md:pt-0 pt-28">
+    <main class="wrapper flex flex-col gap-20 lg:gap-72 md:pt-0 pt-60">
       <section class="section with-background with-cta">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">My resume</h2>
