@@ -1,6 +1,6 @@
 ---
 title: Bonu.sk
-img: /assets/projects/bonu.png
+img: /assets/projects/bonu.svg
 padding: true
 description: |
   Frontend developer
