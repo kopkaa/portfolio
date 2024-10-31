@@ -100,28 +100,6 @@ const projects = await getCollection('projects');
 
       <section class="section with-background bg-variant md:pt-0 pt-28">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">Tech stack</h2>
-          <p>There is list of my favorite technologies I enjoy work with.</p>
-        </header>
-
-        <div class="gallery">
-          <Grid variant="small">
-            {
-              stack.map((s, index) => (
-                <li class="mention-card card-box">
-                  <p>
-                    <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src={s.data.img} alt={s.data.title} />
-                    <sub>{s.data.title}</sub>
-                  </p>
-                </li>
-              ))
-            }
-          </Grid>
-        </div>
-      </section>
-
-      <section class="section with-background bg-variant md:pt-0 pt-28">
-        <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>
         </header>
@@ -148,6 +126,28 @@ const projects = await getCollection('projects');
 						}
 					</Grid>
 					
+        </div>
+      </section>
+
+			<section class="section with-background bg-variant md:pt-0 pt-28">
+        <header class="section-header flex flex-col gap-2 lg:gap-4">
+          <h2 class="text-2xl">Tech stack</h2>
+          <p>There is list of my favorite technologies I enjoy work with.</p>
+        </header>
+
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              stack.map((s, index) => (
+                <li class="mention-card card-box">
+                  <p>
+                    <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" src={s.data.img} alt={s.data.title} />
+                    <sub>{s.data.title}</sub>
+                  </p>
+                </li>
+              ))
+            }
+          </Grid>
         </div>
       </section>
     </main>
