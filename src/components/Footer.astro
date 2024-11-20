@@ -3,19 +3,27 @@ import Icon from "./Icon.astro";
 ---
 
 <footer>
-  <div class="group">
-    <p>
-      Made with ❤️ by Jan Hromádka
-    </p>
-  </div>
+  <p>Made with ❤️ by Jan Hromádka</p>
   <p class="socials">
-    <span class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out">
+    <span
+      class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out"
+    >
       <Icon icon="github-logo" />
-      <a href="https://github.com/kopkaa" target="_blank" class="ml-1 transition-colors duration-300 ease-in-out">GitHub</a>
+      <a
+        href="https://github.com/kopkaa"
+        target="_blank"
+        class="ml-1 transition-colors duration-300 ease-in-out">GitHub</a
+      >
     </span>
-    <span class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out">
+    <span
+      class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out"
+    >
       <Icon icon="linkedin-logo" />
-      <a href="https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/" target="_blank" class="ml-1 transition-colors duration-300 ease-in-out">LinkedIn</a>
+      <a
+        href="https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/"
+        target="_blank"
+        class="ml-1 transition-colors duration-300 ease-in-out">LinkedIn</a
+      >
     </span>
   </p>
 </footer>
@@ -41,13 +49,9 @@ import Icon from "./Icon.astro";
   footer a:hover,
   footer .socials span:hover,
   footer a:focus {
-    color: var(--gray-300); /* Ensure all elements turn to the same hover color */
-  }
-
-  .group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    color: var(
+      --gray-300
+    ); /* Ensure all elements turn to the same hover color */
   }
 
   .socials {
@@ -63,13 +67,6 @@ import Icon from "./Icon.astro";
       justify-content: space-between;
       padding: 2.5rem 5rem;
     }
-
-    .group {
-      flex-direction: row;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
     .socials {
       justify-content: flex-end;
     }
