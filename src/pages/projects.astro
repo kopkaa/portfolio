@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Grid from '../components/Grid.astro';
-import ContactCTA from '../components/ContactCTA.astro';
 const projects = await getCollection('projects');
 ---
 
@@ -37,7 +36,6 @@ const projects = await getCollection('projects');
 					</Grid>
         </div>
       </section>
-			<ContactCTA />
     </main>
   </div>
 </BaseLayout>

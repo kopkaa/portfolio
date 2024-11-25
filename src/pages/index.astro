@@ -10,8 +10,6 @@ import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 
-// Page section components
-import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 
 // Content Fetching: List four most recent work projects
@@ -129,7 +127,7 @@ const projects = await getCollection('projects');
         </div>
       </section>
 
-			<section class="section with-background bg-variant md:pt-0 pt-28">
+			<section class="section with-background bg-variant md:pt-0 pt-28 mb-9">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Tech stack</h2>
           <p>There is list of my favorite technologies I enjoy work with.</p>
@@ -151,7 +149,5 @@ const projects = await getCollection('projects');
         </div>
       </section>
     </main>
-
-    <ContactCTA />
   </div>
 </BaseLayout>

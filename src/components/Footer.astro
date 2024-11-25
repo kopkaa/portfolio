@@ -1,74 +1,99 @@
 ---
 import Icon from "./Icon.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import meImg from "../../public/assets/me.jpg";
 ---
 
-<footer>
-  <p>Made with ❤️ by Jan Hromádka</p>
-  <p class="socials">
-    <span
-      class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out"
+<footer class="footer relative overflow-hidden">
+  <div class="flex flex-col">
+    <div
+      class="py-20 grid grid-cols-1 gap-10 md:py-[120px] md:gap-20 xl:grid-cols-2 xl:py-25 3xl:py-[110px] 4xl:py-[120px] justify-items-center"
     >
-      <Icon icon="github-logo" />
-      <a
-        href="https://github.com/kopkaa"
-        target="_blank"
-        class="ml-1 transition-colors duration-300 ease-in-out">GitHub</a
+      <div
+        class="grid gap-7.5 justify-items-start content-end md:gap-10 md:py-7.5 md:-my-7.5 xl:gap-12.5"
       >
-    </span>
-    <span
-      class="flex items-center hover:text-gray-300 transition-colors duration-300 ease-in-out"
+        <nav
+          class="grid group text-[45px] leading-none text-white font-semibold sm:text-[45px] md:text-[60px]"
+        >
+          <a
+            class="block transition whitespace-nowrap hover:text-purple-300 group-hover:!hover:opacity-50"
+          >
+            Coding.
+          </a>
+          <a
+            class="block transition whitespace-nowrap hover:text-purple-300/75 group-hover:!hover:opacity-50"
+          >
+            Web applications.
+          </a>
+          <a
+            class="block transition whitespace-nowrap hover:text-purple-300/65 group-hover:!hover:opacity-50"
+          >
+            Optimalization.
+          </a>
+        </nav>
+      </div>
+
+      <div
+        class="grid gap-7.5 justify-items-start content-start py-5 -my-5 md:gap-10 md:py-7.5 md:-my-7.5 xl:animation-delay-300"
+        id="kontakt"
+      >
+        <picture>
+          <img
+            width="100"
+            height="100"
+            src={meImg.src}
+            alt="Jan Hromádka - front-end developer"
+            sizes="(min-width: 48em) 6.25rem, 4.375rem"
+            decoding="async"
+            loading="lazy"
+            class="block shrink-0 object-cover rounded-full size-[70px] md:size-25 bg-black"
+            style="object-position: center 25%;"
+          />
+        </picture>
+
+        <div class="grid gap-2.5 place-items-start min-w-0">
+          <a
+            href="mailto:jan.hromadka@outlook.cz"
+            class="block group relative leading-none font-semibold transition !text-purple-300 text-4xl"
+          >
+            jan.hromadka@outlook.com <span
+              class="block absolute inset-x-0 -bottom-1 h-0.5 bg-current transition-transform duration-300 scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
+            ></span>
+          </a>
+          <a
+            href="tel:+420702512072"
+            class="block group relative leading-none font-semibold transition text-3xl"
+          >
+            (+420) 702&nbsp;512&nbsp;072 <span
+              class="block absolute inset-x-0 -bottom-1 h-0.5 bg-current transition-transform duration-300 scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
+            ></span>
+          </a>
+        </div>
+
+        <div class="ml-0 flex gap-x-5 items-center flex-wrap">
+          <Icon
+            icon="linkedin-logo"
+            size="xl"
+            class="cursor-pointer hover:opacity-80 transition"
+          />
+          <Icon
+            icon="github-logo"
+            size="xl"
+            class="cursor-pointer hover:opacity-80 transition"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="pl-11 border-t border-gray-800 md:py-10 xl:gap-12.5 xl:py-7.5 3xl:py-10 4xl:py-12.5"
     >
-      <Icon icon="linkedin-logo" />
-      <a
-        href="https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/"
-        target="_blank"
-        class="ml-1 transition-colors duration-300 ease-in-out">LinkedIn</a
-      >
-    </span>
-  </p>
+      <p class="text-gray-400">Made with ❤️ by Jan Hromádka</p>
+    </div>
+  </div>
 </footer>
-
-<style>
-  footer {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-top: auto;
-    padding: 3rem 2rem 3rem;
-    text-align: center;
-    color: var(--gray-400);
-    font-size: var(--text-sm);
-  }
-
-  footer a,
-  footer .socials span {
-    color: var(--gray-400);
-    transition: color 0.3s ease-in-out;
-  }
-
-  footer a:hover,
-  footer .socials span:hover,
-  footer a:focus {
-    color: var(
-      --gray-300
-    ); /* Ensure all elements turn to the same hover color */
-  }
-
-  .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  @media (min-width: 50em) {
-    footer {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 2.5rem 5rem;
-    }
-    .socials {
-      justify-content: flex-end;
-    }
+<style scoped>
+  a {
+    color: white;
   }
 </style>
