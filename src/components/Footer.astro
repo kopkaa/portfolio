@@ -4,16 +4,16 @@ import ContactCTA from "../components/ContactCTA.astro";
 import meImg from "../../public/assets/me.jpg";
 ---
 
-<footer class="footer relative overflow-hidden">
+<footer class="footer relative overflow-hidden border-t border-gray-800">
   <div class="flex flex-col">
     <div
-      class="py-20 grid grid-cols-1 gap-10 md:py-[120px] md:gap-20 xl:grid-cols-2 xl:py-25 3xl:py-[110px] 4xl:py-[120px] justify-items-center"
+      class="py-20 grid grid-cols-1 gap-10 md:py-[120px] md:gap-20 xl:grid-cols-2 xl:py-25 3xl:py-[110px] 4xl:py-[120px] justify-items-center px-6 md:px-0"
     >
       <div
-        class="grid gap-7.5 justify-items-start content-end md:gap-10 md:py-7.5 md:-my-7.5 xl:gap-12.5"
+        class="hidden md:grid gap-7.5 justify-items-start content-end md:gap-10 md:py-7.5 md:-my-7.5 xl:gap-12.5"
       >
         <nav
-          class="grid group text-[45px] leading-none text-white font-semibold sm:text-[45px] md:text-[60px]"
+          class="grid group text-4xl leading-none text-white font-semibold sm:text-[45px] md:text-[60px]"
         >
           <a
             class="block transition whitespace-nowrap hover:text-purple-300 group-hover:!hover:opacity-50"
@@ -34,7 +34,7 @@ import meImg from "../../public/assets/me.jpg";
       </div>
 
       <div
-        class="grid gap-7.5 justify-items-start content-start py-5 -my-5 md:gap-10 md:py-7.5 md:-my-7.5 xl:animation-delay-300"
+        class="grid gap-7.5 justify-items-start content-start py-5 -my-5 md:gap-10 md:py-7.5 md:-my-7.5 w-full md:w-auto"
         id="kontakt"
       >
         <picture>
@@ -46,15 +46,15 @@ import meImg from "../../public/assets/me.jpg";
             sizes="(min-width: 48em) 6.25rem, 4.375rem"
             decoding="async"
             loading="lazy"
-            class="block shrink-0 object-cover rounded-full size-[70px] md:size-25 bg-black"
+            class="block shrink-0 object-cover rounded-full size-[70px] md:size-25 bg-black md:mb-0 mb-4"
             style="object-position: center 25%;"
           />
         </picture>
 
-        <div class="grid gap-2.5 place-items-start min-w-0">
+        <div class="grid gap-2.5 place-items-start min-w-0 md:mb-0 mb-6">
           <a
             href="mailto:jan.hromadka@outlook.cz"
-            class="block group relative leading-none font-semibold transition !text-purple-300 text-4xl"
+            class="block group relative leading-none font-semibold transition !text-purple-300 md:text-4xl text-lg"
           >
             jan.hromadka@outlook.com <span
               class="block absolute inset-x-0 -bottom-1 h-0.5 bg-current transition-transform duration-300 scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
@@ -62,7 +62,7 @@ import meImg from "../../public/assets/me.jpg";
           </a>
           <a
             href="tel:+420702512072"
-            class="block group relative leading-none font-semibold transition text-3xl"
+            class="block group relative leading-none font-semibold transition md:text-3xl text-lg"
           >
             (+420) 702&nbsp;512&nbsp;072 <span
               class="block absolute inset-x-0 -bottom-1 h-0.5 bg-current transition-transform duration-300 scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
@@ -70,25 +70,23 @@ import meImg from "../../public/assets/me.jpg";
           </a>
         </div>
 
-        <div class="ml-0 flex gap-x-5 items-center flex-wrap">
+        <div class="ml-0 flex gap-2 items-center flex-wrap">
           <Icon
             icon="linkedin-logo"
-            size="xl"
-            class="cursor-pointer hover:opacity-80 transition"
+            class="cursor-pointer hover:opacity-80 transition w-8"
           />
           <Icon
             icon="github-logo"
-            size="xl"
-            class="cursor-pointer hover:opacity-80 transition"
+            class="cursor-pointer hover:opacity-80 transition w-8"
           />
         </div>
       </div>
     </div>
 
     <div
-      class="pl-11 border-t border-gray-800 md:py-10 xl:gap-12.5 xl:py-7.5 3xl:py-10 4xl:py-12.5"
+      class="md:pl-11 border-t border-gray-800 py-10 xl:gap-12.5 xl:py-7.5 3xl:py-10 4xl:py-12.5"
     >
-      <p class="text-gray-400">Made with ❤️ by Jan Hromádka</p>
+      <p class="text-gray-400 text-center md:text-left">Made with ❤️ by Jan Hromádka</p>
     </div>
   </div>
 </footer>
