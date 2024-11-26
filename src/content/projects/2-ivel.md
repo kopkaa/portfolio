@@ -1,6 +1,6 @@
 ---
 title: Tesařství ivel
-img: /assets/projects/ivel.png
+img: /assets/projects/ivel.webp
 padding: true
 description: |
   Simple static site for presentation.

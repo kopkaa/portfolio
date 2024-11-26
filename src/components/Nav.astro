@@ -25,16 +25,18 @@ const textLinks: { label: string; href: string }[] = [
     </a>
 
     <ul class="hidden md:flex items-center gap-8 font-rethink">
-      {textLinks.map(({ label, href }) => (
-        <li>
-          <a
-            href={href}
-            class="text-gray-300 hover:text-purple-300 transition-all"
-          >
-            {label}
-          </a>
-        </li>
-      ))}
+      {
+        textLinks.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="text-gray-300 hover:text-purple-300 transition-all"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <button
@@ -45,7 +47,8 @@ const textLinks: { label: string; href: string }[] = [
       <div
         id="menu-icon"
         class="menu-icon w-full h-[2px] bg-white transition-all duration-300 relative"
-      ></div>
+      >
+      </div>
     </button>
   </div>
 </nav>
@@ -54,18 +57,22 @@ const textLinks: { label: string; href: string }[] = [
   id="menu-overlay"
   class="fixed inset-0 bg-black bg-opacity-90 z-[9998] flex items-center justify-center hidden transition-opacity duration-500"
 >
-  <ul class="flex flex-col items-center gap-8 text-white text-lg font-rethink uppercase">
-    {textLinks.map(({ label, href }) => (
-      <li>
-        <a
-          href={href}
-          class="hover:text-purple-300 transition-all"
-          onclick="document.getElementById('menu-overlay').classList.add('hidden');"
-        >
-          {label}
-        </a>
-      </li>
-    ))}
+  <ul
+    class="flex flex-col items-center gap-8 text-white text-lg font-rethink uppercase"
+  >
+    {
+      textLinks.map(({ label, href }) => (
+        <li>
+          <a
+            href={href}
+            class="hover:text-purple-300 transition-all"
+            onclick="document.getElementById('menu-overlay').classList.add('hidden');"
+          >
+            {label}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
@@ -91,15 +98,19 @@ const textLinks: { label: string; href: string }[] = [
 
       // Hamburger menu toggle
       menuButton?.addEventListener("click", () => {
-        const isVisible = menuOverlay.classList.contains("hidden");
+        const isVisible = menuOverlay?.classList.contains("hidden");
         if (isVisible) {
-          menuOverlay.classList.remove("hidden");
-          menuOverlay.style.opacity = "1";
-          menuIcon.classList.add("open");
+          menuOverlay?.classList.remove("hidden");
+          if (menuOverlay?.style) {
+            menuOverlay.style.opacity = "1";
+          }
+          menuIcon?.classList.add("open");
         } else {
-          menuOverlay.classList.add("hidden");
-          menuOverlay.style.opacity = "0";
-          menuIcon.classList.remove("open");
+          menuOverlay?.classList.add("hidden");
+          if (menuOverlay?.style) {
+            menuOverlay.style.opacity = "0";
+          }
+          menuIcon?.classList.remove("open");
         }
       });
 
@@ -108,7 +119,7 @@ const textLinks: { label: string; href: string }[] = [
         if (e.target === menuOverlay) {
           menuOverlay.classList.add("hidden");
           menuOverlay.style.opacity = "0";
-          menuIcon.classList.remove("open");
+          menuIcon?.classList.remove("open");
         }
       });
     });
@@ -138,12 +149,15 @@ const textLinks: { label: string; href: string }[] = [
 
   .menu-icon::before,
   .menu-icon::after {
-    content: '';
+    content: "";
     position: absolute;
     background-color: white;
     height: 2px;
     width: 100%;
-    transition: transform 0.3s, top 0.3s, bottom 0.3s;
+    transition:
+      transform 0.3s,
+      top 0.3s,
+      bottom 0.3s;
   }
 
   .menu-icon::before {

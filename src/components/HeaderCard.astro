@@ -1,7 +1,8 @@
 ---
 import Icon from "./Icon.astro";
+import { iconPaths } from './IconPaths';
 interface Props {
-  icon: string;
+  icon: keyof typeof iconPaths;
   title: string;
   description: string;
 }
