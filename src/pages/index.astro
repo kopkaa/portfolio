@@ -28,9 +28,9 @@ const projects = await getCollection("projects");
       >
         <Hero
           title="Web developer."
-          tagline="Hi! I'm a web developer who likes to craft solid products with great user experiences."
+          tagline="Hi! I'm a web developer who likes to craft products with great user experiences."
         />
-        <div class="flex gap-8 2xl:gap-16 mt-44 md:flex-row flex-col">
+        <div class="flex gap-8 2xl:gap-16 mt-44 2xl:mt-64 md:flex-row flex-col">
           <HeaderCard
             icon="terminal-window"
             title="Web Applications"
@@ -39,7 +39,7 @@ const projects = await getCollection("projects");
           <HeaderCard
             icon="code"
             title="Coding"
-            description="Transforming designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
+            description="I can transform designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
           />
           <HeaderCard
             icon="speedometer"
@@ -110,7 +110,33 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <section class="section with-background bg-variant md:pt-0 pt-28">
+      <section class="section with-background bg-variant md:pt-0 py-28">
+        <header class="section-header flex flex-col gap-2 lg:gap-4">
+          <h2 class="text-2xl">Tech stack</h2>
+          <p>There is list of my favorite technologies I enjoy work with.</p>
+        </header>
+
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              stack.map((s, index) => (
+                <li class="mention-card card-box">
+                  <p>
+                    <img
+                      class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20"
+                      src={s.data.img}
+                      alt={s.data.title}
+                    />
+                    <sub class="text-base">{s.data.title}</sub>
+                  </p>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+
+      <section class="section with-background bg-variant md:pt-0 py-28">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>
@@ -136,32 +162,6 @@ const projects = await getCollection("projects");
                   </div>
                   <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
                 </a>
-              ))
-            }
-          </Grid>
-        </div>
-      </section>
-
-      <section class="section with-background bg-variant md:pt-0 py-28">
-        <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">Tech stack</h2>
-          <p>There is list of my favorite technologies I enjoy work with.</p>
-        </header>
-
-        <div class="gallery">
-          <Grid variant="small">
-            {
-              stack.map((s, index) => (
-                <li class="mention-card card-box">
-                  <p>
-                    <img
-                      class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20"
-                      src={s.data.img}
-                      alt={s.data.title}
-                    />
-                    <sub class="text-base">{s.data.title}</sub>
-                  </p>
-                </li>
               ))
             }
           </Grid>
