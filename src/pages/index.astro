@@ -34,12 +34,12 @@ const projects = await getCollection("projects");
           <HeaderCard
             icon="terminal-window"
             title="Web Applications"
-            description="I build interactive and scalable web applications using modern frameworks like Vue.js and Nuxt.js, focusing on delivering seamless user experiences."
+            description="I build interactive and scalable web applications using modern frameworks like Vue.js and Nuxt.js."
           />
           <HeaderCard
             icon="code"
             title="Coding"
-            description="Writing clean, efficient, and maintainable code to bring projects to life while adhering to industry best practices."
+            description="Transforming designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
           />
           <HeaderCard
             icon="speedometer"
@@ -159,7 +159,7 @@ const projects = await getCollection("projects");
                       src={s.data.img}
                       alt={s.data.title}
                     />
-                    <sub>{s.data.title}</sub>
+                    <sub class="text-base">{s.data.title}</sub>
                   </p>
                 </li>
               ))
