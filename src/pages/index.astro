@@ -5,10 +5,8 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
-import Icon from "../components/Icon.astro";
 import HeaderCard from "../components/HeaderCard.astro";
 import Skills from "../components/Skills.astro";
 
@@ -110,7 +108,7 @@ const projects = await getCollection("projects");
         </div>
       </section> -->
 
-      <section class="section with-background bg-variant md:pt-0 py-28">
+      <section class="section with-background bg-variant md:pt-0 py-28" id="stack">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Tech stack</h2>
           <p>There is list of my favorite technologies I enjoy work with.</p>
@@ -126,6 +124,8 @@ const projects = await getCollection("projects");
                       class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20"
                       src={s.data.img}
                       alt={s.data.title}
+                      decoding="async"
+                      loading="lazy"
                     />
                     <sub class="text-base">{s.data.title}</sub>
                   </p>
@@ -136,7 +136,7 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <section class="section with-background bg-variant md:pt-0 py-28">
+      <section class="section with-background bg-variant md:pt-0 py-28" id="references">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>

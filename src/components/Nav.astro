@@ -1,8 +1,6 @@
 ---
-import Icon from "./Icon.astro";
-
 const textLinks: { label: string; href: string }[] = [
-  { label: "About me", href: "#navigation" },
+  { label: "About me", href: "#about" },
   { label: "References", href: "#references" },
   { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },
@@ -45,24 +43,44 @@ const textLinks: { label: string; href: string }[] = [
 </nav>
 
 <script>
-  if (typeof window !== "undefined") {
-    document.addEventListener("DOMContentLoaded", () => {
-      const header = document.getElementById("header");
-
-      const handleScroll = () => {
-        if (window.scrollY === 0) {
-          header?.classList.remove("scrolled");
-        } else {
-          header?.classList.add("scrolled");
-        }
-      };
-
-      handleScroll();
-
-      window.addEventListener("scroll", handleScroll);
-    });
-  }
-</script>
+	if (typeof window !== "undefined") {
+	  document.addEventListener("DOMContentLoaded", () => {
+		const header = document.getElementById("header");
+  
+		// Handle sticky navbar background on scroll
+		const handleScroll = () => {
+		  if (window.scrollY === 0) {
+			header?.classList.remove("scrolled");
+		  } else {
+			header?.classList.add("scrolled");
+		  }
+		};
+  
+		handleScroll();
+		window.addEventListener("scroll", handleScroll);
+  
+		const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  
+		navLinks.forEach((link) => {
+		  link.addEventListener("click", (e) => {
+			e.preventDefault();
+			const targetId = link.getAttribute("href").substring(1);
+			const targetElement = document.getElementById(targetId);
+			const offset = header.offsetHeight + 25;
+  
+			if (targetElement) {
+			  const targetPosition = targetElement.offsetTop - offset;
+			  window.scrollTo({
+				top: targetPosition,
+				behavior: "smooth",
+			  });
+			}
+		  });
+		});
+	  });
+	}
+  </script>
+  
 
 <style>
   .nav {
@@ -75,7 +93,7 @@ const textLinks: { label: string; href: string }[] = [
   }
 
   .nav.scrolled {
-    background: rgba(13, 18, 35, .875);
+    background: rgba(13, 18, 35, 0.875);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
