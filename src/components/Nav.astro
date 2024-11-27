@@ -77,53 +77,70 @@ const textLinks: { label: string; href: string }[] = [
 </div>
 
 <script>
-  if (typeof window !== "undefined") {
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuButton = document.getElementById("menu-button");
-      const menuOverlay = document.getElementById("menu-overlay");
-      const menuIcon = document.getElementById("menu-icon");
-      const header = document.getElementById("header");
+if (typeof window !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const menuIcon = document.getElementById("menu-icon");
+    const header = document.getElementById("header");
 
-      // Handle sticky navbar background on scroll
-      const handleScroll = () => {
-        if (window.scrollY === 0) {
-          header?.classList.remove("scrolled");
-        } else {
-          header?.classList.add("scrolled");
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        header?.classList.remove("scrolled");
+      } else {
+        header?.classList.add("scrolled");
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    menuButton?.addEventListener("click", () => {
+      const isVisible = menuOverlay?.classList.contains("hidden");
+      if (isVisible) {
+        menuOverlay?.classList.remove("hidden");
+        if (menuOverlay?.style) {
+          menuOverlay.style.opacity = "1";
         }
-      };
-
-      handleScroll();
-      window.addEventListener("scroll", handleScroll);
-
-      // Hamburger menu toggle
-      menuButton?.addEventListener("click", () => {
-        const isVisible = menuOverlay?.classList.contains("hidden");
-        if (isVisible) {
-          menuOverlay?.classList.remove("hidden");
-          if (menuOverlay?.style) {
-            menuOverlay.style.opacity = "1";
-          }
-          menuIcon?.classList.add("open");
-        } else {
-          menuOverlay?.classList.add("hidden");
-          if (menuOverlay?.style) {
-            menuOverlay.style.opacity = "0";
-          }
-          menuIcon?.classList.remove("open");
-        }
-      });
-
-      // Close menu on outside click
-      menuOverlay?.addEventListener("click", (e) => {
-        if (e.target === menuOverlay) {
-          menuOverlay.classList.add("hidden");
+        menuIcon?.classList.add("open");
+      } else {
+        menuOverlay?.classList.add("hidden");
+        if (menuOverlay?.style) {
           menuOverlay.style.opacity = "0";
-          menuIcon?.classList.remove("open");
         }
-      });
+        menuIcon?.classList.remove("open");
+      }
     });
-  }
+
+    menuOverlay?.addEventListener("click", (e) => {
+      if (e.target === menuOverlay) {
+        menuOverlay.classList.add("hidden");
+        menuOverlay.style.opacity = "0";
+        menuIcon?.classList.remove("open");
+      }
+    });
+
+    const adjustScroll = (event: any) => {
+      const headerHeight = header?.offsetHeight || 0;
+      const targetId = event.target.getAttribute("href")?.substring(1);
+      if (targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          event.preventDefault();
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: targetPosition - (headerHeight + 50),
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", adjustScroll);
+    });
+  });
+}
+
 </script>
 
 <style>
