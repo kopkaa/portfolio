@@ -31,6 +31,8 @@ const textLinks: { label: string; href: string }[] = [
             <a
               href={href}
               class="text-gray-300 hover:text-purple-300 transition-all"
+              aria-label={`Navigate to ${label}`}
+              data-nav="true"
             >
               {label}
             </a>
@@ -67,6 +69,8 @@ const textLinks: { label: string; href: string }[] = [
             href={href}
             class="hover:text-purple-300 transition-all"
             onclick="document.getElementById('menu-overlay').classList.add('hidden');"
+            aria-label={`Navigate to ${label}`}
+            data-nav="true"
           >
             {label}
           </a>
@@ -124,23 +128,30 @@ const textLinks: { label: string; href: string }[] = [
         menuIcon?.classList.remove("open");
       });
 
-      const adjustScroll = (event: any) => {
-        const headerHeight = header?.offsetHeight || 0;
-        const targetId = event.target.getAttribute("href")?.substring(1);
-        if (targetId) {
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            event.preventDefault();
-            const targetPosition =
-              targetElement.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({
-              top: targetPosition - (headerHeight + 50),
-              behavior: "smooth",
-            });
+      const adjustScroll = (event: MouseEvent): void => {
+        const headerHeight = header?.offsetHeight || 0; // Adjust height based on your header
+        const target = event.target as HTMLAnchorElement;
+
+        if (target?.getAttribute("href")) {
+          let href = target.getAttribute("href")!;
+          const targetId = href.replace(/^\/?#/, "");
+
+          if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              event.preventDefault();
+              const targetPosition =
+                targetElement.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({
+                top: targetPosition - headerHeight - 20,
+                behavior: "smooth",
+              });
+            }
           }
         }
       };
-      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+      document.querySelectorAll('a[data-nav="true"]').forEach((link) => {
         link.addEventListener("click", adjustScroll);
       });
     });
