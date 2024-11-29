@@ -31,14 +31,14 @@ const projects = await getCollection("projects");
         />
         <div class="flex gap-8 2xl:gap-16 mt-44 2xl:mt-64 md:flex-row flex-col">
           <HeaderCard
-            icon="terminal-window"
-            title="Web Applications"
-            description="I build interactive and scalable web applications using modern frameworks like Vue.js and Nuxt.js."
-          />
-          <HeaderCard
             icon="code"
             title="Coding"
             description="I can transform designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
+          />
+          <HeaderCard
+            icon="terminal-window"
+            title="Web Applications"
+            description="I build interactive web applications using Javascript and frameworks like Vue.js and Nuxt.js."
           />
           <HeaderCard
             icon="speedometer"
@@ -109,7 +109,10 @@ const projects = await getCollection("projects");
         </div>
       </section> -->
 
-      <section class="section with-background bg-variant md:pt-0 py-28" id="stack">
+      <section
+        class="section with-background bg-variant md:pt-0 py-28"
+        id="stack"
+      >
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Tech stack</h2>
           <p>There is list of my favorite technologies I enjoy work with.</p>
@@ -137,7 +140,10 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <section class="section with-background bg-variant md:pt-0 py-28" id="references">
+      <section
+        class="section with-background bg-variant md:pt-0 py-28"
+        id="references"
+      >
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>
