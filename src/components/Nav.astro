@@ -152,7 +152,7 @@ const textLinks: { label: string; href: string }[] = [
       };
 
       document.querySelectorAll('a[data-nav="true"]').forEach((link) => {
-        link.addEventListener("click", adjustScroll);
+        link.addEventListener("click", (e) => adjustScroll(e as MouseEvent));
       });
     });
   }
