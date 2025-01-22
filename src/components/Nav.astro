@@ -129,7 +129,7 @@ const textLinks: { label: string; href: string }[] = [
       });
 
       const adjustScroll = (event: MouseEvent): void => {
-        const headerHeight = header?.offsetHeight || 0; // Adjust height based on your header
+        const headerHeight = header?.offsetHeight || 0; 
         const target = event.target as HTMLAnchorElement;
 
         if (target?.getAttribute("href")) {
