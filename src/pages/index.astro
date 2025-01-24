@@ -1,29 +1,25 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Component Imports
-import Grid from "../components/Grid.astro";
-import Hero from "../components/Hero.astro";
-import HeaderCard from "../components/HeaderCard.astro";
-import Skills from "../components/Skills.astro";
+import Grid from '../components/Grid.astro';
+import Hero from '../components/Hero.astro';
+import HeaderCard from '../components/HeaderCard.astro';
+import Skills from '../components/Skills.astro';
 
 // Content Fetching: List four most recent work projects
-const jobs = await getCollection("work");
-const stack = await getCollection("stack");
-const projects = await getCollection("projects");
+const jobs = await getCollection('work');
+const stack = await getCollection('stack');
+const projects = await getCollection('projects');
 ---
 
 <BaseLayout>
   <div class="flex flex-col md:gap-64">
-    <div
-      class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]"
-    >
-      <header
-        class="hero flex flex-col justify-center items-center text-center md:text-left mt-64 2xl:mt-64 md:mt-56"
-      >
+    <div class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]">
+      <header class="hero flex flex-col justify-center items-center text-center md:text-left mt-64 2xl:mt-64 md:mt-56">
         <Hero
           title="Web developer."
           tagline="Hi! I'm a web developer who likes to craft products with great user experiences."
@@ -52,55 +48,8 @@ const projects = await getCollection("projects");
       <Skills />
     </div>
 
-    <main
-      class="wrapper flex flex-col gap-20 lg:gap-72 md:pt-0 pt-60 pb-8 md:pb-0"
-    >
-      <!-- <section class="section with-background with-cta">
-        <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">My resume</h2>
-          <p>There is timeline of my work experiences.</p>
-        </header>
-
-        <div class="gallery">
-          <div class="container mx-auto w-full h-full">
-            <div class="relative wrap overflow-hidden p-4 md:p-10 h-full">
-              <div
-                class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-0 md:left-1/2"
-              >
-              </div>
-
-              {
-                jobs.map((job, index) => (
-                  <div
-                    class={`mb-8 mt-3 flex flex-col md:flex-row justify-between items-center w-full ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
-                  >
-                    <div class="order-1 w-0 md:w-5/12" />
-
-                    <div class="order-1 w-8 h-8 rounded-full bg-purple-700 dark:bg-purple-600 shadow-lg flex items-center justify-center z-20">
-                      <h1 class="text-lg text-white font-semibold">
-                        {jobs.length - index}
-                      </h1>
-                    </div>
-
-                    <div class="order-1 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-4 hover:bg-purple-900 transition duration-300">
-                      <h3 class="mb-1 font-bold text-xl text-purple-500">
-                        {job.data.company}
-                      </h3>
-                      <p class="italic text-sm text-gray-400 mb-3">
-                        {job.data.date}
-                      </p>
-                      <p
-                        class="text-gray-300 leading-relaxed text-sm"
-                        set:html={job.data.description}
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-
+    <main class="wrapper flex flex-col gap-20 lg:gap-72 md:pt-0 pt-60 pb-8 md:pb-0">
+      <!-- 
         <div class="cta self-end">
           <CallToAction href="/assets/cv.pdf" download>
             Download my cv
@@ -109,10 +58,7 @@ const projects = await getCollection("projects");
         </div>
       </section> -->
 
-      <section
-        class="section with-background bg-variant md:pt-0 py-28"
-        id="stack"
-      >
+      <section class="section with-background bg-variant md:pt-0 py-28" id="stack">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Tech stack</h2>
           <p>There is list of my favorite technologies I enjoy work with.</p>
@@ -127,7 +73,7 @@ const projects = await getCollection("projects");
                     <img
                       class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20"
                       src={s.data.img}
-                      alt={s.data.title}
+                      alt={`${s.data.title} logo`}
                       decoding="async"
                       loading="lazy"
                     />
@@ -140,10 +86,7 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <section
-        class="section with-background bg-variant md:pt-0 py-28"
-        id="references"
-      >
+      <section class="section with-background bg-variant md:pt-0 py-28" id="references">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2 class="text-2xl">Projects and references</h2>
           <p>Here are some projects I did or I have been a part of</p>
@@ -159,12 +102,10 @@ const projects = await getCollection("projects");
                 >
                   <div
                     class={`flex items-center justify-center h-full w-full bg-center bg-cover bg-no-repeat`}
-                    style={`background-image: url('${project.data.img}'); ${project.data.padding ? "background-size: 80%" : ""}`}
+                    style={`background-image: url('${project.data.img}'); ${project.data.padding ? 'background-size: 80%' : ''}`}
                   >
                     <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                      <h3 class="text-white text-xl font-semibold text-center">
-                        {project.data.title}
-                      </h3>
+                      <h3 class="text-white text-xl font-semibold text-center">{project.data.title}</h3>
                     </div>
                   </div>
                   <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
