@@ -15,5 +15,8 @@
     "astro": "^4.12.2",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
 }
