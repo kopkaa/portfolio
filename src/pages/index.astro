@@ -11,7 +11,6 @@ import HeaderCard from '../components/HeaderCard.astro';
 import Skills from '../components/Skills.astro';
 
 // Content Fetching: List four most recent work projects
-const jobs = await getCollection('work');
 const stack = await getCollection('stack');
 const projects = await getCollection('projects');
 ---
@@ -25,23 +24,30 @@ const projects = await getCollection('projects');
           tagline="Hi! I'm a web developer who likes to craft products with great user experiences."
           align="center"
         />
-        <div class="flex gap-8 2xl:gap-16 mt-44 2xl:mt-64 md:flex-row flex-col">
-          <HeaderCard
-            icon="code"
-            title="Coding"
-            description="I can transform designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
-          />
-          <HeaderCard
-            icon="terminal-window"
-            title="Web Applications"
-            description="I build interactive web applications using Javascript and frameworks like Vue.js and Nuxt.js."
-          />
-          <HeaderCard
-            icon="speedometer"
-            title="Optimization"
-            description="I optimize websites and applications for better performance, SEO, faster load times on all devices."
-          />
-        </div>
+				<div class="flex gap-8 2xl:gap-16 mt-44 2xl:mt-64 md:flex-row flex-col">
+					<div class="opacity-0 animate-fade-in-up delay-100">
+						<HeaderCard
+							icon="code"
+							title="Coding"
+							description="I can transform designs into responsive and accessible websites using HTML, CSS, and modern web technologies."
+						/>
+					</div>
+					<div class="opacity-0 animate-fade-in-up delay-300">
+						<HeaderCard
+							icon="terminal-window"
+							title="Web Applications"
+							description="I build interactive web applications using Javascript and frameworks like Vue.js and Nuxt.js."
+						/>
+					</div>
+					<div class="opacity-0 animate-fade-in-up delay-500">
+						<HeaderCard
+							icon="speedometer"
+							title="Optimization"
+							description="I optimize websites and applications for better performance, SEO, faster load times on all devices."
+						/>
+					</div>
+				</div>				
+				
       </header>
     </div>
     <div class="wrapper pb-10 mt-48 md:mt-0">

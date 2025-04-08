@@ -26,8 +26,36 @@ export default {
           "0 0px 20px rgba(255,255, 255, 0.35)",
           "0 0px 65px rgba(255, 255,255, 0.2)"
         ]
-      }
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+				'pop-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.95) translateY(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1) translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+				'pop-in': 'pop-in 0.6s ease-out forwards',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+		require('tailwindcss-animate'),
+	],
 };
