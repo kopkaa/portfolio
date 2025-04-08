@@ -12,7 +12,7 @@ const { tagline, title, align = "start", titleSize = "7xl" } = Astro.props;
 <div class={`text-${align} text-lg flex flex-col gap-4 md:min-h-0`}>
 	<div class={`flex flex-col gap-2 text-${align} md:text-${align}`}>
 		<h1 class={`text-${titleSize} md:text-7xl !leading-normal font-extrabold font-rethink bg-gradient-to-r from-blue-600 via-purple-400 to-indigo-400 inline-block text-transparent bg-clip-text`}>{title}</h1>
-		{tagline && <p class="md:text-2xl text-lg mt-2 opacity-0 animate-pop-in delay-500">{tagline}</p>}
+		{tagline && <p class="md:text-2xl text-lg mt-2 opacity-0 animate-pop-in delay-420">{tagline}</p>}
 	</div>
 	<slot />
 </div>
