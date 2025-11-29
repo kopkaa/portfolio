@@ -1,16 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Component Imports
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import HeaderCard from '../components/HeaderCard.astro';
 import Skills from '../components/Skills.astro';
 
-// Content Fetching: List four most recent work projects
 const stack = await getCollection('stack');
 const projects = await getCollection('projects');
 ---
@@ -75,16 +72,17 @@ const projects = await getCollection('projects');
             {
               stack.map((s, index) => (
                 <li class="mention-card card-box">
-                  <p>
+                  <div class="tech-stack-item">
                     <img
-                      class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20"
+                      class="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20"
                       src={s.data.img}
-                      alt={`${s.data.title} logo`}
+                      alt=""
+                      aria-hidden="true"
                       decoding="async"
                       loading="lazy"
                     />
-                    <sub class="text-base">{s.data.title}</sub>
-                  </p>
+                    <span class="tech-name">{s.data.title}</span>
+                  </div>
                 </li>
               ))
             }
@@ -99,21 +97,18 @@ const projects = await getCollection('projects');
         </header>
 
         <div class="gallery pb-8">
-          <Grid variant="small">
+          <Grid variant="stack">
             {
               projects.map((project, index) => (
                 <a
                   href={`/projects/${project.id}`}
-                  class="group relative w-full h-72 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 card-box cursor-pointer"
+                  class="project-card group relative w-full rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 card-box cursor-pointer"
+                  aria-label={`View ${project.data.title} project`}
                 >
                   <div
                     class={`flex items-center justify-center h-full w-full bg-center bg-cover bg-no-repeat`}
                     style={`background-image: url('${project.data.img}'); ${project.data.padding ? 'background-size: 80%' : ''}`}
-                  >
-                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                      <h3 class="text-white text-xl font-semibold text-center">{project.data.title}</h3>
-                    </div>
-                  </div>
+                  />
                   <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
                 </a>
               ))
