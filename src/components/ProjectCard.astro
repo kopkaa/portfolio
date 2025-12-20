@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  img: string;
+  padding?: boolean;
+}
+
+const { href, title, img, padding } = Astro.props;
+---
+
+<a
+  href={href}
+  class="project-card group relative w-full rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 card-box cursor-pointer"
+  aria-label={`View ${title} project`}
+>
+  <div
+    class="flex items-center justify-center h-full w-full bg-center bg-cover bg-no-repeat"
+    style={`background-image: url('${img}'); ${padding ? 'background-size: 80%' : ''}`}
+  />
+  <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+</a>
