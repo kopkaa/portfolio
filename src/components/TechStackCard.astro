@@ -8,7 +8,7 @@ const { title, img } = Astro.props;
 ---
 
 <li class="mention-card card-box">
-  <div class="tech-stack-item">
+  <div class="tech-stack-item" role="img" aria-label={title}>
     <img
       class="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20"
       src={img}
@@ -17,6 +17,6 @@ const { title, img } = Astro.props;
       decoding="async"
       loading="lazy"
     />
-    <span class="tech-name">{title}</span>
+    <span class="tech-name" aria-hidden="true">{title}</span>
   </div>
 </li>
