@@ -1,0 +1,35 @@
+---
+import Icon from "./Icon.astro";
+
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/",
+    icon: "linkedin-logo",
+    label: "LinkedIn Profile",
+  },
+  {
+    href: "https://github.com/kopkaa",
+    icon: "github-logo",
+    label: "GitHub Profile",
+  },
+  {
+    href: "https://codepen.io/kopkaa",
+    icon: "codepen-logo",
+    label: "Codepen Profile",
+  },
+];
+---
+
+<div class="flex items-center gap-2 mt-3">
+  {socialLinks.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={link.label}
+      class="cursor-pointer hover:opacity-80 transition w-8 mr-2 last:mr-0"
+    >
+      <Icon icon={link.icon} />
+    </a>
+  ))}
+</div>

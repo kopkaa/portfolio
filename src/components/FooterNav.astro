@@ -1,0 +1,19 @@
+---
+const navItems = [
+  { text: "Coding.", opacity: "text-white" },
+  { text: "Web applications.", opacity: "text-white/75" },
+  { text: "Optimization.", opacity: "text-white/65" },
+];
+---
+
+<nav
+  class="grid group text-4xl leading-none text-white font-semibold sm:text-[45px] md:text-[60px]"
+>
+  {navItems.map((item) => (
+    <p
+      class={`block transition whitespace-nowrap hover:text-purple-300 group-hover:opacity-50 hover:!opacity-100 ${item.opacity}`}
+    >
+      {item.text}
+    </p>
+  ))}
+</nav>
