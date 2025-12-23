@@ -15,8 +15,8 @@ const { href, title, img, padding } = Astro.props;
   aria-label={`View ${title} project`}
 >
   <div
-    class="flex items-center justify-center h-full w-full bg-center bg-cover bg-no-repeat"
-    style={`background-image: url('${img}'); ${padding ? 'background-size: 80%' : ''}`}
+    class={`flex items-center justify-center h-full w-full bg-center bg-no-repeat ${padding ? 'bg-[length:80%]' : 'bg-cover'}`}
+    style={`background-image: url('${img}')`}
   />
   <div class="absolute inset-0 border border-gray-800 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
 </a>
