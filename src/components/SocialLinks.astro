@@ -1,7 +1,12 @@
 ---
 import Icon from "./Icon.astro";
+import { iconPaths } from './IconPaths';
 
-const socialLinks = [
+const socialLinks: Array<{
+  href: string;
+  icon: keyof typeof iconPaths;
+  label: string;
+}> = [
   {
     href: "https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/",
     icon: "linkedin-logo",
