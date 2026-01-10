@@ -117,16 +117,13 @@ const projects = await getCollection('projects');
   function rotateText() {
     if (!textElement) return;
 
-    // Fade out with slide up
     textElement.style.opacity = '0';
     textElement.style.transform = 'translateY(-20px)';
 
     setTimeout(() => {
-      // Change text
       currentIndex = (currentIndex + 1) % titles.length;
       textElement.textContent = titles[currentIndex];
 
-      // Reset position and fade in with slide up
       textElement.style.transform = 'translateY(20px)';
 
       requestAnimationFrame(() => {
@@ -141,9 +138,8 @@ const projects = await getCollection('projects');
     textElement.textContent = titles[currentIndex];
     textElement.style.opacity = '1';
 
-    // Start rotation after a delay
     setTimeout(() => {
+      rotateText(); // First rotation
       setInterval(rotateText, 3500);
-    }, 3500);
-  }
+    }, 2000);
 </script>
