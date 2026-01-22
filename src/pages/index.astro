@@ -3,11 +3,11 @@ import { getCollection } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import Grid from '../components/Grid.astro';
-import HeaderCard from '../components/HeaderCard.astro';
-import Skills from '../components/Skills.astro';
-import TechStackCard from '../components/TechStackCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import Grid from '../components/ui/Grid.astro';
+import HeaderCard from '../components/cards/HeaderCard.astro';
+import Skills from '../components/sections/Skills.astro';
+import TechStackCard from '../components/cards/TechStackCard.astro';
+import ProjectCard from '../components/cards/ProjectCard.astro';
 
 const stack = await getCollection('stack');
 const projects = await getCollection('projects');
