@@ -5,9 +5,9 @@ padding: true
 description: |
   Full-stack developer
 tags:
-  - Vue.js 
+  - Vue.js
   - Node.js
-  - Postgres
+  - PostgreSQL
   - WebRTC
   - Bash
 ---

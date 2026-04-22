@@ -5,7 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import Hero from "../../components/sections/Hero.astro";
 import Icon from "../../components/ui/Icon.astro";
-import Pill from "../../components/ui/Pill.astro";
+import TechBadge from "../../components/ui/TechBadge.astro";
 
 interface Props {
   entry: CollectionEntry<"projects">;
@@ -48,7 +48,7 @@ const { Content } = await render(entry);
           <Hero title={entry.data.title} align="start" titleSize="4xl">
             <div class="details">
               <div class="tags flex-wrap">
-                {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
+                {entry.data.tags.map((t) => <TechBadge tag={t} />)}
               </div>
               <p class="description">{entry.data.description}</p>
             </div>

@@ -10,7 +10,7 @@ tags:
   - Kotlin
   - Node.js
   - Micronaut
-  - Postgres
+  - PostgreSQL
   - Docker
   - AWS
 ---

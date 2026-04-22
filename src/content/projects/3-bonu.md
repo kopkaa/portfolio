@@ -5,8 +5,9 @@ padding: true
 description: |
   Frontend developer
 tags:
-  - Vue.js (Nuxt)
-  - Typescript
+  - Vue.js
+  - Nuxt
+  - TypeScript
   - Tailwind
   - Shadcn
 ---

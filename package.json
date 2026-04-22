@@ -20,6 +20,8 @@
     "@rollup/rollup-linux-x64-gnu": "4.6.1"
   },
   "devDependencies": {
+    "@iconify-json/simple-icons": "^1.2.79",
+    "astro-icon": "^1.1.5",
     "tailwindcss-animate": "^1.0.7"
   }
 }

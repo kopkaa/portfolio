@@ -5,9 +5,9 @@ padding: true
 description: |
   Full-stack developer
 tags:
-  - Vue.js 
+  - Vue.js
   - Node.js
-  - Postgres
+  - PostgreSQL
 ---
 ## Project
 Anthony App specializes in smart parking solutions, including autonomous traffic and parking management systems with AI-based detection and real-time license plate recognition. This experience allowed me to enhance my technical skills and contribute to the development of a robust and efficient web application.<br>

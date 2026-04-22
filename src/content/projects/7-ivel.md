@@ -5,7 +5,7 @@ padding: true
 description: |
   Simple static site for presentation.
 tags:
-  - Nuxt.js
+  - Nuxt
   - Tailwind
   - Netlify
 ---
