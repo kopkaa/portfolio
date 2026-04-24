@@ -11,21 +11,41 @@ const { icon, title, description } = Astro.props;
 ---
 
 <div
-  class="w-full max-w-[30rem] 2xl:max-w-[550px] min-h-[300px] 2xl:min-h-[350px] p-8 bg-gradient-to-b from-[#1a1f3d]/80 to-[#111728]/60 text-white rounded-xl shadow-2xl shadow-[#00000088] flex flex-col justify-start transition-transform hover:scale-[1.02] hover:shadow-lg hover:shadow-[#000000aa]"
+  class="group relative w-full max-w-[25rem] p-7 md:p-8 rounded-2xl overflow-hidden text-left
+         border border-white/[0.08]
+         bg-gradient-to-b from-[#1a1f3d]/70 to-[#0d1224]/70
+         backdrop-blur-sm
+         shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)]
+         transition-[transform,border-color,box-shadow] duration-500 ease-out
+         hover:-translate-y-1.5
+         hover:border-[#c561f6]/30
+         hover:shadow-[0_20px_50px_-15px_rgba(197,97,246,0.25)]"
 >
   <div
-    class="flex items-center justify-center w-12 h-12 mb-1 mx-auto md:mx-0"
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+    style="background: radial-gradient(520px circle at 50% 0%, rgba(197,97,246,0.10), transparent 45%);"
   >
-    <Icon
-      icon={icon}
-      size="1.6em"
-      class="text-[#c561f6] filter drop-shadow-[0_0_10px_rgba(197,97,246,1)]"
-    />
   </div>
-  <h3 class="text-2xl font-semibold mb-8 tracking-wide">
-    {title}
-  </h3>
-  <p class="text-gray-400/80 text-lg leading-relaxed">
-    {description}
-  </p>
+
+  <div class="relative flex flex-col items-start">
+    <div
+      class="flex items-center justify-center w-12 h-12 mb-6 rounded-xl
+             bg-[#c561f6]/10 border border-[#c561f6]/20
+             transition-colors duration-300
+             group-hover:bg-[#c561f6]/15 group-hover:border-[#c561f6]/40"
+    >
+      <Icon
+        icon={icon}
+        size="1.4em"
+        class="text-[#c561f6]"
+      />
+    </div>
+    <h3 class="text-left text-[1.35rem] font-semibold mb-3 tracking-tight text-white">
+      {title}
+    </h3>
+    <p class="text-left text-base leading-relaxed text-gray-400/90">
+      {description}
+    </p>
+  </div>
 </div>

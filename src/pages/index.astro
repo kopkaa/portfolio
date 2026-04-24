@@ -14,48 +14,51 @@ const projects = await getCollection('projects');
 ---
 
 <BaseLayout>
-  <div class="flex flex-col md:gap-64">
-    <div class="wrapper flex flex-col gap-8 lg:gap-20 md:min-h-0 min-h-[calc(100vh-7rem)]">
-      <header class="hero flex flex-col justify-center items-center text-center md:text-left mt-64 2xl:mt-64 md:mt-56">
-        <div class="text-center text-lg flex flex-col gap-4 md:min-h-0">
-          <div class="flex flex-col gap-2 text-center md:text-center">
-            <div class="h-[4rem] md:h-[6rem] flex items-center justify-center relative">
-              <h1 id="rotating-text" class="text-5xl md:text-7xl !leading-tight md:!leading-normal font-extrabold font-rethink bg-gradient-to-r from-blue-600 via-purple-400 to-indigo-400 inline-block text-transparent bg-clip-text transition-all duration-500 ease-in-out"></h1>
-            </div>
-            <p class="md:text-2xl text-lg mt-12 md:mt-2 opacity-0 animate-pop-in delay-500">Hi! I'm a full-stack developer who likes to craft products with great user experiences.</p>
+  <div class="flex flex-col gap-28 md:gap-40">
+    <div class="wrapper flex flex-col md:min-h-0 min-h-[calc(100vh-7rem)]">
+      <header class="hero flex flex-col justify-center items-center text-center mt-28 md:mt-36">
+        <div class="flex flex-col gap-5 max-w-3xl">
+          <div class="h-[3.5rem] md:h-[5rem] flex items-center justify-center relative">
+            <h1
+              id="rotating-text"
+              class="text-4xl md:text-6xl font-extrabold font-rethink tracking-tight leading-none bg-gradient-to-r from-[#7611a6] via-[#c561f6] to-[#6366f1] inline-block text-transparent bg-clip-text will-change-[transform,opacity,filter] transition-[opacity,transform,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            ></h1>
+          </div>
+          <p class="text-base md:text-xl text-[var(--gray-300)] leading-relaxed max-w-2xl mx-auto opacity-0 animate-pop-in delay-500">
+            Hi! I'm a full-stack developer who likes to craft products with great user experiences.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-14 md:mt-20 w-full max-w-6xl place-items-stretch">
+          <div class="opacity-0 animate-fade-in-up delay-100 flex justify-center">
+            <HeaderCard
+              icon="gear"
+              title="Backend & APIs"
+              description="I design and develop backend services, REST APIs, and integrate third-party services using primarily Node.js ecosystem."
+            />
+          </div>
+          <div class="opacity-0 animate-fade-in-up delay-300 flex justify-center">
+            <HeaderCard
+              icon="code"
+              title="Frontend development"
+              description="I transform designs into responsive and accessible web applications using Tailwind, Vue.js, and Nuxt.js."
+            />
+          </div>
+          <div class="opacity-0 animate-fade-in-up delay-500 flex justify-center">
+            <HeaderCard
+              icon="rocket-launch"
+              title="Cloud"
+              description="I have experience deploying applications with Docker, working with AWS services, and managing infrastructure using Terraform."
+            />
           </div>
         </div>
-				<div class="flex gap-8 2xl:gap-16 mt-44 2xl:mt-64 md:flex-row flex-col">
-					<div class="opacity-0 animate-fade-in-up delay-100">
-						<HeaderCard
-							icon="gear"
-							title="Backend & APIs"
-							description="I design and develop backend services, REST APIs, and integrate third-party services using primarily Node.js ecosystem."
-						/>
-					</div>
-					<div class="opacity-0 animate-fade-in-up delay-300">
-						<HeaderCard
-							icon="code"
-							title="Frontend development"
-							description="I transform designs into responsive and accessible web applications using Tailwind, Vue.js, and Nuxt.js."
-						/>
-					</div>
-					<div class="opacity-0 animate-fade-in-up delay-500">
-						<HeaderCard
-							icon="rocket-launch"
-							title="Cloud"
-							description="I have experience deploying applications with Docker, working with AWS services, and managing infrastructure using Terraform."
-						/>
-					</div>
-				</div>				
-				
       </header>
     </div>
-    <div class="wrapper pb-10 mt-48 md:mt-0">
+    <div class="wrapper">
       <Skills />
     </div>
 
-    <main class="wrapper flex flex-col gap-20 lg:gap-72 md:pt-0 pt-60 pb-8 md:pb-0">
+    <main class="wrapper flex flex-col gap-24 lg:gap-48 pt-4 md:pt-0 pb-8 md:pb-0">
       <!-- 
         <div class="cta self-end">
           <CallToAction href="/assets/cv.pdf" download>
@@ -118,29 +121,33 @@ const projects = await getCollection('projects');
     if (!textElement) return;
 
     textElement.style.opacity = '0';
-    textElement.style.transform = 'translateY(-20px)';
+    textElement.style.transform = 'translateY(-8px)';
+    textElement.style.filter = 'blur(6px)';
 
     setTimeout(() => {
       currentIndex = (currentIndex + 1) % titles.length;
       textElement.textContent = titles[currentIndex];
-
-      textElement.style.transform = 'translateY(20px)';
+      textElement.style.transform = 'translateY(8px)';
+      textElement.style.filter = 'blur(6px)';
 
       requestAnimationFrame(() => {
-        textElement.style.opacity = '1';
-        textElement.style.transform = 'translateY(0)';
+        requestAnimationFrame(() => {
+          textElement.style.opacity = '1';
+          textElement.style.transform = 'translateY(0)';
+          textElement.style.filter = 'blur(0)';
+        });
       });
-    }, 500);
+    }, 450);
   }
 
-  // Initialize with first title
   if (textElement) {
     textElement.textContent = titles[currentIndex];
     textElement.style.opacity = '1';
+    textElement.style.filter = 'blur(0)';
 
     setTimeout(() => {
-      rotateText(); 
-      setInterval(rotateText, 2700);
+      rotateText();
+      setInterval(rotateText, 2800);
     }, 2000);
   }
 </script>
