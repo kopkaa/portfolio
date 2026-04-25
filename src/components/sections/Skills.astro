@@ -1,24 +1,145 @@
 ---
-
+const facts = [
+  { icon: '📍', label: 'Based in', value: 'Ostrava, Czechia' },
+  { icon: '💻', label: 'Coding for', value: '5+ years, full stack' },
+  { icon: '🎓', label: 'Studied', value: 'Computer Science' },
+  { icon: '🏸', label: 'Off-keyboard', value: 'Badminton, football, tennis' },
+];
 ---
 
-<section class="mt-7" id="about">
-  <h2 class="text-4xl">Hello!👋</h2>
-  <div class="text-md mt-6">
-		<p class="mt-4 sm:mt-6 md:mt-8">
-			My name is Jan.<br> I'm a web developer with a passion for creating web applications.<br> 
-			Currently I'm based in Ostrava 🇨🇿
-		</p>
-		<p class="mt-4 sm:mt-6 md:mt-6">
-			I have background in computer science at university and over 4 years of experience in the field 💻<br> I enjoy programming and development in general,
-			from writing queries, styling components and pages, to designing and implementing APIs.
-		</p>
-		<p class="mt-4 sm:mt-6 md:mt-6">
-			In my free time, I’m passionate about staying active through various sports 🏃<br> Badminton 🏸 is my biggest passion, but I also enjoy playing football ⚽ or tennis 🎾<br> For me, movement is life, and keeping active is essential to my well-being.
-		</p>
-		<p class="mt-4 sm:mt-6 md:mt-6">
-			I believe in continuous learning and love sharing knowledge with others 📖 <br /><br />Let’s create something
-			amazing together! 🚀
-		</p>
+<section id="about" class="mt-7">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+    <div class="lg:col-span-3 flex flex-col gap-6">
+      <h2
+        class="text-4xl md:text-5xl font-extrabold font-rethink tracking-tight text-[var(--gray-100)]"
+        data-reveal-blur
+      >
+        Hello! <span class="inline-block">👋</span>
+      </h2>
+
+      <div class="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-[var(--gray-300)]">
+        <p data-reveal style="--reveal-delay: 120ms">
+          I'm <span class="font-semibold text-[var(--gray-100)]">Jan</span> — a developer based in
+          <span class="bg-gradient-to-r from-[#7611a6] via-[#c561f6] to-[#6366f1] text-transparent bg-clip-text font-semibold">Ostrava</span>
+          who likes turning ideas into working products. I have a CS background and 5+ years of professional experience across the stack.
+        </p>
+        <p data-reveal style="--reveal-delay: 240ms">
+          I enjoy the whole spectrum of web work — from writing queries and designing APIs to styling components that feel right to use. The "boring" parts are usually where the interesting problems hide.
+        </p>
+        <p data-reveal style="--reveal-delay: 360ms">
+          Outside of code, I keep sharp through sports — badminton is my main thing, with football and tennis on the side. Movement is non-negotiable.
+        </p>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-2 flex flex-col gap-3 lg:mt-2">
+      {facts.map((fact, i) => (
+        <div
+          class="fact-chip group flex items-center gap-4 px-5 py-4 rounded-2xl border border-white/[0.08]"
+          data-reveal-pop
+          style={`--reveal-delay: ${600 + i * 100}ms`}
+        >
+          <span class="fact-icon flex items-center justify-center w-11 h-11 rounded-xl text-2xl bg-[#c561f6]/10 border border-[#c561f6]/20 transition-colors duration-300 group-hover:bg-[#c561f6]/15 group-hover:border-[#c561f6]/40">
+            {fact.icon}
+          </span>
+          <div class="flex flex-col leading-tight">
+            <span class="text-[0.7rem] uppercase tracking-[0.12em] text-[var(--gray-400)] font-medium">
+              {fact.label}
+            </span>
+            <span class="text-sm md:text-base text-[var(--gray-100)] font-medium mt-0.5">
+              {fact.value}
+            </span>
+          </div>
+        </div>
+      ))}
+    </aside>
   </div>
 </section>
+
+<style>
+  [data-reveal-blur],
+  [data-reveal],
+  [data-reveal-pop] {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+  }
+
+  [data-reveal-blur] {
+    transform: translateY(10px);
+    filter: blur(8px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.7s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal] {
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal-pop] {
+    transform: scale(0.94) translateY(8px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal-blur].is-visible,
+  [data-reveal].is-visible,
+  [data-reveal-pop].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .fact-chip {
+    background: linear-gradient(180deg, rgba(26, 31, 61, 0.55), rgba(13, 18, 36, 0.55));
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6);
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .fact-chip:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 97, 246, 0.3);
+    box-shadow: 0 18px 40px -18px rgba(197, 97, 246, 0.25);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal-blur],
+    [data-reveal],
+    [data-reveal-pop] {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+  );
+
+  document
+    .querySelectorAll('[data-reveal-blur], [data-reveal], [data-reveal-pop]')
+    .forEach((el) => observer.observe(el));
+</script>
