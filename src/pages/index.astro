@@ -84,8 +84,8 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
 
       <section class="section with-background bg-variant md:pt-0 py-28" id="stack">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">The tools I reach for</h2>
-          <p>Stuff I use daily, weekly, or whenever a problem fits — grouped by where they live in the stack.</p>
+          <h2 class="text-2xl">Tech stack</h2>
+          <p>There is list of my favorite technologies I enjoy work with.</p>
         </header>
 
         <div class="gallery">
@@ -96,7 +96,7 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
                   <h3 class="stack-category-title">
                     <span>{cat.label}</span>
                   </h3>
-                  <ul class="stack-grid">
+                  <ul class="stack-pills">
                     {cat.items.map((item) => (
                       <TechStackCard
                         title={item.data.title}

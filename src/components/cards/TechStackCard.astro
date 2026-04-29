@@ -8,16 +8,14 @@ interface Props {
 const { title, img, featured = false } = Astro.props;
 ---
 
-<li class:list={['mention-card card-box', { 'featured-card': featured }]}>
-  <div class="tech-stack-item" role="img" aria-label={title}>
-    <img
-      class="tech-stack-icon w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
-      src={img}
-      alt=""
-      aria-hidden="true"
-      decoding="async"
-      loading="lazy"
-    />
-    <span class="tech-name" aria-hidden="true">{title}</span>
-  </div>
+<li class:list={['tech-pill', { 'tech-pill-featured': featured }]}>
+  <img
+    class="tech-pill-icon"
+    src={img}
+    alt=""
+    aria-hidden="true"
+    decoding="async"
+    loading="lazy"
+  />
+  <span class="tech-pill-name">{title}</span>
 </li>
