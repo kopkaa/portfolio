@@ -11,6 +11,20 @@ import ProjectCard from '../components/cards/ProjectCard.astro';
 
 const stack = await getCollection('stack');
 const projects = await getCollection('projects');
+
+const STACK_CATEGORIES = [
+  { id: 'languages', label: 'Languages' },
+  { id: 'frontend', label: 'Frontend' },
+  { id: 'backend', label: 'Backend & Data' },
+  { id: 'cloud', label: 'Cloud & DevOps' },
+] as const;
+
+const groupedStack = STACK_CATEGORIES.map((cat) => ({
+  ...cat,
+  items: stack
+    .filter((s) => s.data.category === cat.id)
+    .sort((a, b) => a.data.order - b.data.order),
+}));
 ---
 
 <BaseLayout>
@@ -70,16 +84,31 @@ const projects = await getCollection('projects');
 
       <section class="section with-background bg-variant md:pt-0 py-28" id="stack">
         <header class="section-header flex flex-col gap-2 lg:gap-4">
-          <h2 class="text-2xl">Tech stack</h2>
-          <p>There is list of my favorite technologies I enjoy work with.</p>
+          <h2 class="text-2xl">The tools I reach for</h2>
+          <p>Stuff I use daily, weekly, or whenever a problem fits — grouped by where they live in the stack.</p>
         </header>
 
         <div class="gallery">
-          <Grid variant="small">
-            {stack.map((s) => (
-              <TechStackCard title={s.data.title} img={s.data.img} />
+          <div class="stack-categories">
+            {groupedStack.map((cat) => (
+              cat.items.length > 0 && (
+                <div class="stack-category">
+                  <h3 class="stack-category-title">
+                    <span>{cat.label}</span>
+                  </h3>
+                  <ul class="stack-grid">
+                    {cat.items.map((item) => (
+                      <TechStackCard
+                        title={item.data.title}
+                        img={item.data.img}
+                        featured={item.data.featured}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              )
             ))}
-          </Grid>
+          </div>
         </div>
       </section>
 

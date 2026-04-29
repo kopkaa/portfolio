@@ -2,15 +2,16 @@
 interface Props {
   title: string;
   img: string;
+  featured?: boolean;
 }
 
-const { title, img } = Astro.props;
+const { title, img, featured = false } = Astro.props;
 ---
 
-<li class="mention-card card-box">
+<li class:list={['mention-card card-box', { 'featured-card': featured }]}>
   <div class="tech-stack-item" role="img" aria-label={title}>
     <img
-      class="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20"
+      class="tech-stack-icon w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
       src={img}
       alt=""
       aria-hidden="true"

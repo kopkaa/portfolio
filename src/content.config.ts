@@ -15,6 +15,9 @@ export const collections = {
     schema: z.object({
       title: z.string(),
       img: z.string(),
+      category: z.enum(["languages", "frontend", "backend", "cloud"]),
+      order: z.number(),
+      featured: z.boolean().optional().default(false),
     }),
   }),
   projects: defineCollection({
