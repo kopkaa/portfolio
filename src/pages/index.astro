@@ -27,7 +27,10 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
 }));
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Jan Hromádka — Full-Stack Web Developer"
+  description="Full-stack web developer based in Ostrava, Czechia. I build web apps with Vue, Nuxt, Node.js, Kotlin, AWS, and Terraform. See projects, stack, and contact."
+>
   <div class="flex flex-col gap-28 md:gap-40">
     <div class="wrapper flex flex-col min-h-dvh justify-center pt-28 md:pt-36">
       <header class="hero flex flex-col justify-center items-center text-center">
@@ -36,7 +39,7 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
             <h1
               id="rotating-text"
               class="text-4xl md:text-6xl font-extrabold font-rethink tracking-tight leading-none bg-gradient-to-r from-[#7611a6] via-[#c561f6] to-[#6366f1] inline-block text-transparent bg-clip-text will-change-[transform,opacity,filter] transition-[opacity,transform,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-            ></h1>
+            >Full-stack developer.</h1>
           </div>
           <p class="text-base md:text-xl text-[var(--gray-300)] leading-relaxed max-w-2xl mx-auto opacity-0 animate-pop-in delay-500">
             Hi! I'm a full-stack developer who likes to craft products with great user experiences.
@@ -137,8 +140,8 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
 
 <script>
   const titles = [
-    "Web developer.",
     "Full-stack developer.",
+    "Web developer.",
     "Backend developer.",
     "Frontend developer."
   ];

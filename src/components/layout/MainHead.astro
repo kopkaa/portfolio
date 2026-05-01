@@ -4,23 +4,83 @@ import "../../styles/global.css";
 interface Props {
   title?: string | undefined;
   description?: string | undefined;
+  ogImage?: string | undefined;
+  ogType?: string | undefined;
+  noindex?: boolean | undefined;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[] | undefined;
 }
 
 const {
-  title = "Jan Hromádka - Web Developer",
-  description = "Personal portfolio",
+  title = "Jan Hromádka — Full-Stack Web Developer",
+  description = "Personal portfolio of Jan Hromádka, a full-stack web developer based in Ostrava, Czechia. Vue, Nuxt, Node.js, Kotlin, AWS, Terraform.",
+  ogImage = "/homepage.png",
+  ogType = "website",
+  noindex = false,
+  jsonLd,
 } = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://jhromadka.dev");
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const ogImageUrl = new URL(ogImage, siteUrl);
+
+const defaultJsonLd: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jan Hromádka",
+    url: siteUrl.href,
+    image: new URL("/assets/me.jpg", siteUrl).href,
+    jobTitle: "Full-Stack Web Developer",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ostrava",
+      addressCountry: "CZ",
+    },
+    email: "mailto:jan.hromadka@outlook.com",
+    sameAs: [
+      "https://www.linkedin.com/in/jan-hrom%C3%A1dka-ba3820197/",
+      "https://github.com/kopkaa",
+      "https://codepen.io/kopkaa",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "jhromadka.dev",
+    url: siteUrl.href,
+  },
+];
+
+const extraLd = jsonLd === undefined ? [] : Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+const ldList = [...defaultJsonLd, ...extraLd];
 ---
 
 <meta charset="UTF-8" />
-<meta name="author" content="Jan Hromádka" />
-<meta name="description" property="og:description" content={description} />
-<meta property="og:image" content="/homepage.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content={Astro.generator} />
 <title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Jan Hromádka" />
+{noindex && <meta name="robots" content="noindex, follow" />}
+<link rel="canonical" href={canonical.href} />
 
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="jhromadka.dev" />
+<meta property="og:url" content={canonical.href} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl.href} />
+<meta property="og:image:alt" content={`${title} — preview`} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl.href} />
+
+<meta name="generator" content={Astro.generator} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" href="/icon.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -53,6 +113,11 @@ const {
     rel="stylesheet"
   />
 </noscript>
+
+{ldList.map((data) => (
+  <script type="application/ld+json" set:html={JSON.stringify(data)} />
+))}
+
 <script is:inline>
   // This code is inlined in the head to make dark mode instant & blocking.
   const getThemePreference = () => {
