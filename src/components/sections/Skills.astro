@@ -14,7 +14,7 @@ const facts = [
         class="text-4xl md:text-5xl font-extrabold font-rethink tracking-tight text-[var(--gray-100)]"
         data-reveal-blur
       >
-        Hello! <span class="inline-block">👋</span>
+        Hello! <span class="wave-emoji inline-block">👋</span>
       </h2>
 
       <div class="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-[var(--gray-300)]">
@@ -114,6 +114,22 @@ const facts = [
     background: rgba(197, 97, 246, 0.9);
   }
 
+  .wave-emoji {
+    transform-origin: 70% 70%;
+    animation: wave 4s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%   { transform: rotate(0deg); }
+    5%   { transform: rotate(14deg); }
+    10%  { transform: rotate(-8deg); }
+    15%  { transform: rotate(14deg); }
+    20%  { transform: rotate(-4deg); }
+    25%  { transform: rotate(10deg); }
+    30%  { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     [data-reveal-blur],
     [data-reveal],
@@ -122,6 +138,10 @@ const facts = [
       transform: none;
       filter: none;
       transition: none;
+    }
+
+    .wave-emoji {
+      animation: none;
     }
   }
 </style>
