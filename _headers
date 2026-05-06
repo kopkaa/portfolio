@@ -7,3 +7,10 @@
 
 /*.gif
   Cache-Control: public, max-age=15552000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=15552000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=15552000, immutable
+
