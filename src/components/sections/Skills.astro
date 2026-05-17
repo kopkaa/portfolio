@@ -1,9 +1,16 @@
 ---
-const facts = [
-  { icon: '📍', label: 'Based in', value: 'Ostrava, Czechia' },
-  { icon: '💻', label: 'Coding for', value: '5+ years, full stack' },
-  { icon: '🎓', label: 'Studied', value: 'Computer Science' },
-  { icon: '🏸', label: 'Off-keyboard', value: 'Badminton, football, tennis' },
+import Icon from '../ui/Icon.astro';
+import { iconPaths } from '../ui/IconPaths';
+
+const facts: Array<{
+  icon: keyof typeof iconPaths;
+  label: string;
+  value: string;
+}> = [
+  { icon: 'map-pin', label: 'Based in', value: 'Ostrava, Czechia' },
+  { icon: 'terminal-window', label: 'Coding for', value: '5+ years, full stack' },
+  { icon: 'graduation-cap', label: 'Studied', value: 'Computer Science' },
+  { icon: 'barbell', label: 'Off-keyboard', value: 'Badminton, football, tennis' },
 ];
 ---
 
@@ -39,8 +46,8 @@ const facts = [
           data-reveal-pop
           style={`--reveal-delay: ${600 + i * 100}ms`}
         >
-          <span class="text-lg leading-none">
-            {fact.icon}
+          <span class="fact-icon inline-flex items-center justify-center w-5 h-5 text-[#c561f6] shrink-0">
+            <Icon icon={fact.icon} />
           </span>
           <div class="flex items-baseline gap-x-3 gap-y-0.5 flex-1 min-w-0 flex-wrap">
             <span class="text-[0.68rem] uppercase tracking-[0.14em] text-[var(--gray-400)] font-medium">
@@ -96,6 +103,20 @@ const facts = [
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
+  }
+
+  .fact-icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fact-row:hover .fact-icon {
+    color: #d684ff;
+    transform: scale(1.08);
+  }
+
+  .fact-icon {
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .fact-row::before {
