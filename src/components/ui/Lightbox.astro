@@ -1,0 +1,340 @@
+---
+// Lightbox / image gallery viewer.
+// Progressively enhances every <img> inside `.content` (markdown-rendered
+// project photos) so they open in a fullscreen viewer with gallery
+// navigation and click-to-zoom. No runtime dependencies.
+---
+
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+  hidden
+>
+  <button class="lb-btn lb-close" type="button" aria-label="Close viewer">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
+
+  <button class="lb-btn lb-nav lb-prev" type="button" aria-label="Previous image">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 5l-7 7 7 7" />
+    </svg>
+  </button>
+
+  <button class="lb-btn lb-nav lb-next" type="button" aria-label="Next image">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <figure class="lb-stage">
+    <img class="lb-img" src="" alt="" />
+  </figure>
+
+  <div class="lb-counter" aria-hidden="true">
+    <span class="lb-index">1</span> / <span class="lb-total">1</span>
+  </div>
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(9, 11, 17, 0.94);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox.is-open {
+    opacity: 1;
+  }
+
+  .lb-stage {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  .lb-img {
+    max-width: min(92vw, 1400px);
+    max-height: 88vh;
+    border-radius: 0.75rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    cursor: zoom-in;
+    transform: scale(0.95);
+    opacity: 0;
+    transition:
+      transform 0.25s ease,
+      opacity 0.2s ease;
+  }
+
+  .lightbox.is-open .lb-img {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .lb-stage.zoomed .lb-img {
+    transform: scale(2.4);
+    cursor: zoom-out;
+    max-height: 88vh;
+  }
+
+  .lb-btn {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .lb-btn:hover,
+  .lb-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .lb-btn:active {
+    transform: scale(0.92);
+  }
+
+  .lb-btn svg {
+    width: 60%;
+    height: 60%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .lb-close {
+    top: 1rem;
+    right: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .lb-nav {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .lb-nav:active {
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  .lb-prev {
+    left: 1rem;
+  }
+
+  .lb-next {
+    right: 1rem;
+  }
+
+  .lb-counter {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 40em) {
+    .lb-nav {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .lb-prev {
+      left: 0.5rem;
+    }
+    .lb-next {
+      right: 0.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox,
+    .lb-img,
+    .lb-btn {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+
+  if (lightbox) {
+    // Non-null alias so the type narrows inside nested closures below.
+    const lb: HTMLElement = lightbox;
+    const imgEl = lightbox.querySelector(".lb-img") as HTMLImageElement;
+    const stage = lightbox.querySelector(".lb-stage") as HTMLElement;
+    const indexEl = lightbox.querySelector(".lb-index") as HTMLElement;
+    const totalEl = lightbox.querySelector(".lb-total") as HTMLElement;
+    const counter = lightbox.querySelector(".lb-counter") as HTMLElement;
+    const btnClose = lightbox.querySelector(".lb-close") as HTMLButtonElement;
+    const btnPrev = lightbox.querySelector(".lb-prev") as HTMLButtonElement;
+    const btnNext = lightbox.querySelector(".lb-next") as HTMLButtonElement;
+
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLImageElement>(".content img"),
+    );
+
+    if (triggers.length > 0) {
+      const sources = triggers.map((img) => ({
+        src: img.currentSrc || img.src,
+        alt: img.alt || "",
+      }));
+      const multi = sources.length > 1;
+      let current = 0;
+      let lastFocused: HTMLElement | null = null;
+
+      if (multi) {
+        totalEl.textContent = String(sources.length);
+      } else {
+        btnPrev.hidden = true;
+        btnNext.hidden = true;
+        counter.hidden = true;
+      }
+
+      // Make each markdown image a keyboard-accessible gallery trigger.
+      triggers.forEach((img, i) => {
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+        img.setAttribute("aria-label", "Open image in viewer");
+        img.addEventListener("click", () => open(i));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open(i);
+          }
+        });
+      });
+
+      function show(i: number) {
+        current = (i + sources.length) % sources.length;
+        stage.classList.remove("zoomed");
+        imgEl.style.transformOrigin = "center";
+        imgEl.src = sources[current].src;
+        imgEl.alt = sources[current].alt;
+        if (multi) indexEl.textContent = String(current + 1);
+      }
+
+      function open(i: number) {
+        lastFocused = document.activeElement as HTMLElement;
+        show(i);
+        lb.hidden = false;
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => lb.classList.add("is-open"));
+        btnClose.focus();
+      }
+
+      function close() {
+        lb.classList.remove("is-open");
+        document.body.style.overflow = "";
+        const done = () => {
+          lb.hidden = true;
+          lb.removeEventListener("transitionend", done);
+        };
+        lb.addEventListener("transitionend", done);
+        lastFocused?.focus();
+      }
+
+      const next = () => show(current + 1);
+      const prev = () => show(current - 1);
+
+      btnClose.addEventListener("click", close);
+      btnNext.addEventListener("click", next);
+      btnPrev.addEventListener("click", prev);
+
+      // Close when clicking the backdrop or empty stage area.
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox || e.target === stage) close();
+      });
+
+      // Click image to toggle zoom; move cursor to pan while zoomed.
+      imgEl.addEventListener("click", () => stage.classList.toggle("zoomed"));
+      stage.addEventListener("mousemove", (e) => {
+        if (!stage.classList.contains("zoomed")) return;
+        const r = imgEl.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        imgEl.style.transformOrigin = `${x}% ${y}%`;
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (lb.hidden) return;
+        if (e.key === "Escape") {
+          close();
+        } else if (multi && e.key === "ArrowRight") {
+          next();
+        } else if (multi && e.key === "ArrowLeft") {
+          prev();
+        } else if (e.key === "Tab") {
+          // Trap focus among the visible viewer controls.
+          const focusable = [btnClose, btnPrev, btnNext].filter(
+            (b) => !b.hidden,
+          );
+          e.preventDefault();
+          const idx = focusable.indexOf(document.activeElement as HTMLButtonElement);
+          const dir = e.shiftKey ? -1 : 1;
+          const nextIdx = (idx + dir + focusable.length) % focusable.length;
+          focusable[nextIdx].focus();
+        }
+      });
+
+      // Swipe navigation on touch devices.
+      let touchX = 0;
+      lightbox.addEventListener(
+        "touchstart",
+        (e) => {
+          touchX = e.changedTouches[0].clientX;
+        },
+        { passive: true },
+      );
+      lightbox.addEventListener(
+        "touchend",
+        (e) => {
+          if (!multi) return;
+          const dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+        },
+        { passive: true },
+      );
+    }
+  }
+</script>

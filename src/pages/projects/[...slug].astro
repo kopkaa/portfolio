@@ -6,6 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/sections/Hero.astro";
 import Icon from "../../components/ui/Icon.astro";
 import TechBadge from "../../components/ui/TechBadge.astro";
+import Lightbox from "../../components/ui/Lightbox.astro";
 
 interface Props {
   entry: CollectionEntry<"projects">;
@@ -100,6 +101,7 @@ const breadcrumbLd: Record<string, unknown> = {
       </main>
     </div>
   </div>
+  <Lightbox />
 </BaseLayout>
 
 <style>
@@ -154,6 +156,24 @@ const breadcrumbLd: Record<string, unknown> = {
     box-shadow: var(--shadow-sm);
     background: var(--gradient-subtle);
     border: 1px solid var(--gray-800);
+    cursor: zoom-in;
+    transition:
+      transform var(--theme-transition),
+      box-shadow var(--theme-transition);
+  }
+
+  .content :global(img:hover) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .content :global(img) {
+      transition: none;
+    }
+    .content :global(img:hover) {
+      transform: none;
+    }
   }
 
   .content :global(blockquote) {
