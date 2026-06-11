@@ -25,6 +25,12 @@ const MAP: Record<string, TechIconInfo> = {
   "html5":       { icon: "simple-icons:html5",             color: "#E34F26", label: "HTML5" },
   "css3":        { icon: "simple-icons:css3",              color: "#1572B6", label: "CSS3" },
   "wordpress":   { icon: "simple-icons:wordpress",         color: "#21759B", label: "WordPress" },
+  "php":         { icon: "simple-icons:php",               color: "#777BB4", label: "PHP" },
+  "nette":       { icon: null,                             color: "#3484D2", label: "Nette" },
+  "elasticsearch": { icon: "simple-icons:elasticsearch",   color: "#005571", label: "Elasticsearch" },
+  "mysql":       { icon: "simple-icons:mysql",             color: "#4479A1", label: "MySQL" },
+  "mongodb":     { icon: "simple-icons:mongodb",           color: "#47A248", label: "MongoDB" },
+  "rabbitmq":    { icon: "simple-icons:rabbitmq",          color: "#FF6600", label: "RabbitMQ" },
 };
 
 const ALIASES: Record<string, string> = {
