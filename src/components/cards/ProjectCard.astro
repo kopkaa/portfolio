@@ -21,7 +21,7 @@ const { href, title, img, padding } = Astro.props;
 
   {/* Hover-reveal overlay: gradient scrim + "View project" CTA + company name, confirming what a click leads to */}
   <div
-    class="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 motion-reduce:transition-none motion-reduce:translate-y-0"
+    class="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 bg-linear-to-t/srgb from-black/80 via-black/40 to-transparent opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 motion-reduce:transition-none motion-reduce:translate-y-0"
   >
     <span class="flex items-center gap-1.5 text-sm font-medium uppercase tracking-wide text-white/80">
       View project
