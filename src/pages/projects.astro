@@ -41,7 +41,7 @@ const projects = await getCollection('projects');
     </header>
 
     <main>
-      <Grid variant="stack">
+      <Grid>
         {projects.map((project) => (
           <ProjectCard
             href={`/projects/${project.id}`}

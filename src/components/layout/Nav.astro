@@ -1,5 +1,4 @@
 ---
-import ContactCTA from "../sections/ContactCTA.astro";
 const textLinks: { label: string; href: string }[] = [
   { label: "About me", href: "/#about" },
   { label: "Stack", href: "/#stack" },
@@ -68,7 +67,6 @@ const textLinks: { label: string; href: string }[] = [
           <a
             href={href}
             class="hover:text-purple-300 transition-all"
-            onclick="document.getElementById('menu-overlay').classList.add('hidden');"
             aria-label={`Navigate to ${label}`}
             data-nav="true"
           >
