@@ -23,11 +23,17 @@
 	--animate-pop-in: pop-in 0.6s ease-out forwards;
 }
 
-/* Referencing another custom property must go through `@theme inline`:
-   a plain @theme resolves var() where the token is DEFINED, not where the
-   utility is used, which would leave .font-rethink pointing at nothing. */
-@theme inline {
-	--font-rethink: var(--font-rethink-sans);
+/* The nav, the logo and every h1 use `font-rethink`. Rethink Sans was declared
+   in the old tailwind.config but never actually loaded — it was missing from
+   the Google Fonts URL — so these have always rendered in the browser's
+   generic sans-serif, and that is the look the design was built around.
+   Loading the real face would be a redesign, not a fix.
+
+   Kept as the bare `sans-serif` keyword on purpose: Tailwind's own --font-sans
+   is a concrete stack (Segoe UI on Windows, -apple-system on macOS) and would
+   not reproduce the same rendering. */
+@theme {
+	--font-rethink: sans-serif;
 }
 
 @keyframes fade-in-up {

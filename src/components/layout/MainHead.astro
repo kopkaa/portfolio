@@ -86,10 +86,9 @@ const ldList = [...defaultJsonLd, ...extraLd];
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" href="/icon.png" />
 
-<!-- Preload only the faces that paint above the fold: Public Sans (body)
-     and Rethink Sans (nav + h1). Rubik is /projects-only, so it loads normally. -->
+<!-- Public Sans is the body face and paints above the fold, so it preloads.
+     Rubik only appears on /projects, so it loads normally. -->
 <Font cssVariable="--font-public-sans" preload />
-<Font cssVariable="--font-rethink-sans" preload />
 <Font cssVariable="--font-rubik" />
 
 {ldList.map((data) => (

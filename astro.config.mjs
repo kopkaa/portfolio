@@ -13,10 +13,13 @@ export default defineConfig({
   // render-blocking <link>, no FOUT hack. Weights are exactly what the
   // stylesheets ask for:
   //   Public Sans  400/700 + italic (markdown emphasis renders <em>)
-  //   Rubik        500/600/800 (.page-title uses 800, blockquote 600)
-  //   Rethink Sans 400/600/800 (nav 400, logo 600, headings 800) — this face
-  //                was never actually loaded before, so `font-rethink` had
-  //                been silently falling back to sans-serif
+  //   Rubik        500/600 — matching what the old Google URL actually served
+  //
+  // Rethink Sans is deliberately NOT here: it was declared in the old
+  // tailwind.config and used via `font-rethink`, but never present in the
+  // Google Fonts URL, so it always fell back to the generic sans-serif. That
+  // fallback is the look the site was designed around, so loading the real
+  // face would be a redesign, not a fix. See --font-rethink in global.css.
   fonts: [
     {
       provider: fontProviders.google(),
@@ -32,16 +35,7 @@ export default defineConfig({
       name: 'Rubik',
       cssVariable: '--font-rubik',
       subsets: ['latin', 'latin-ext'],
-      weights: [500, 600, 800],
-      styles: ['normal'],
-      fallbacks: ['sans-serif'],
-    },
-    {
-      provider: fontProviders.google(),
-      name: 'Rethink Sans',
-      cssVariable: '--font-rethink-sans',
-      subsets: ['latin', 'latin-ext'],
-      weights: [400, 600, 800],
+      weights: [500, 600],
       styles: ['normal'],
       fallbacks: ['sans-serif'],
     },
