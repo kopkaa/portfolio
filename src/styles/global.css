@@ -173,49 +173,58 @@
 		0px 16px 16px rgba(255, 255, 255, 0.1), 0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
-html {
-	scroll-behavior: smooth;
-}
-
-html,
-body {
-	overflow-x: hidden;
-}
-
-body {
-	background-color: var(--gray-999);
-	color: var(--gray-200);
-	font-family: var(--font-body);
-	-webkit-font-smoothing: antialiased;
-	line-height: 1.5;
-}
-
-*,
-*::after,
-*::before {
-	box-sizing: border-box;
-	margin: 0;
-}
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-a {
-	color: var(--link-color);
-}
-
+/* This element-level reset MUST live inside `@layer base`.
+   Tailwind 3 emitted utilities as flat CSS, so specificity decided conflicts
+   and `.mt-20` (0,1,0) beat `*{margin:0}` (0,0,0). Tailwind 4 puts utilities
+   in `@layer utilities`, and unlayered CSS outranks every cascade layer
+   regardless of specificity — so leaving these rules unlayered silently
+   defeats every margin utility on the site, and `a{color}` defeats every
+   text-colour utility on a link. */
 @layer base {
-  h1 {
-    @apply text-7xl font-bold;
-  }
-  h2 {
-    @apply text-3xl font-semibold;
-  }
-  h3 {
-    @apply text-2xl font-medium;
-  }
+	html {
+		scroll-behavior: smooth;
+	}
+
+	html,
+	body {
+		overflow-x: hidden;
+	}
+
+	body {
+		background-color: var(--gray-999);
+		color: var(--gray-200);
+		font-family: var(--font-body);
+		-webkit-font-smoothing: antialiased;
+		line-height: 1.5;
+	}
+
+	*,
+	*::after,
+	*::before {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	a {
+		color: var(--link-color);
+	}
+
+	h1 {
+		@apply text-7xl font-bold;
+	}
+
+	h2 {
+		@apply text-3xl font-semibold;
+	}
+
+	h3 {
+		@apply text-2xl font-medium;
+	}
 }
 
 
