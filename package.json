@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^5.5.4",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.8",
     "typescript": "^5.5.3"
   },
   "optionalDependencies": {
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@iconify-json/simple-icons": "^1.2.79",
     "@tailwindcss/vite": "^4.3.3",
-    "astro-icon": "^1.1.5",
+    "astro-icon": "^1.2.0",
     "tailwindcss": "^4.3.3"
   }
 }
