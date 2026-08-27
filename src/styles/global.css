@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Tailwind theme tokens — migrated from tailwind.config.mjs (Tailwind v4).
+
+   Only values Tailwind must generate utilities from live here. The design
+   tokens further down (--gray-*, --accent-*, --shadow-*) deliberately stay
+   in :root: they drive the scoped component styles, not Tailwind classes,
+   and some of them intentionally differ from Tailwind's own palette —
+   e.g. --gray-800 is light (#e3e6ee) while Tailwind's gray-800 is dark,
+   and `border-gray-800` in Footer/ProjectCard relies on Tailwind's value.
+   Aliasing them into @theme would silently break those borders.
+   --------------------------------------------------------------------------- */
+@theme {
+	--color-green-200: #ccf381;
+	--color-blue-200: #4831d4;
+	--color-blue-800: #06083d;
+	--color-purple-300: #af43be;
+	--color-purple-400: #fe00fe;
+
+	--font-rethink: "Rethink Sans", sans-serif;
+
+	--animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+	--animate-pop-in: pop-in 0.6s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pop-in {
+	0% {
+		opacity: 0;
+		transform: scale(0.95) translateY(10px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+/* Replaces the `tailwindcss-animate` plugin (JS plugins are legacy in v4).
+   Its only load-bearing feature here was extending `delay-*` to also set
+   `animation-delay` — the hero card stagger (`animate-fade-in-up delay-300`)
+   does nothing without it, since core `delay-*` only sets transition-delay.
+   The `[*]` pair keeps arbitrary values like `delay-[250ms]` working. */
+@utility delay-* {
+	animation-delay: --value(integer)ms;
+	animation-delay: --value([*]);
+}
+
 :root {
 	/* Colors */
 	--gray-0: #090b11;

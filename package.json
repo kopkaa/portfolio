@@ -12,9 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/tailwind": "^6.0.1",
     "astro": "^5.5.4",
-    "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
   },
   "optionalDependencies": {
@@ -22,7 +20,8 @@
   },
   "devDependencies": {
     "@iconify-json/simple-icons": "^1.2.79",
+    "@tailwindcss/vite": "^4.3.3",
     "astro-icon": "^1.1.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss": "^4.3.3"
   }
 }
