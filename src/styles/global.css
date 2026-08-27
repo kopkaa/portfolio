@@ -18,10 +18,16 @@
 	--color-purple-300: #af43be;
 	--color-purple-400: #fe00fe;
 
-	--font-rethink: "Rethink Sans", sans-serif;
 
 	--animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 	--animate-pop-in: pop-in 0.6s ease-out forwards;
+}
+
+/* Referencing another custom property must go through `@theme inline`:
+   a plain @theme resolves var() where the token is DEFINED, not where the
+   utility is used, which would leave .font-rethink pointing at nothing. */
+@theme inline {
+	--font-rethink: var(--font-rethink-sans);
 }
 
 @keyframes fade-in-up {
@@ -112,8 +118,8 @@
 	/* Fonts */
 	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-body: 'Public Sans', var(--font-system);
-	--font-brand: Rubik, var(--font-system);
+	--font-body: var(--font-public-sans);
+	--font-brand: var(--font-rubik);
 
 	/* Transitions */
 	--theme-transition: 0.2s ease-in-out;
