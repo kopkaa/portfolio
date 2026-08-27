@@ -1,6 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-import { resolveTechIcon } from "../../lib/techIcons";
+import { resolveTechIcon, getTechIconSvg } from "../../lib/techIcons";
 
 interface Props {
   tag: string;
@@ -10,6 +9,7 @@ const { tag } = Astro.props;
 const info = resolveTechIcon(tag);
 const label = info?.label ?? tag;
 const color = info?.color ?? "var(--gray-400)";
+const svg = info?.icon ? getTechIconSvg(info.icon) : null;
 ---
 
 <span
@@ -17,7 +17,14 @@ const color = info?.color ?? "var(--gray-400)";
   style={`--tech-color: ${color};`}
   aria-label={label}
 >
-  {info?.icon && <Icon name={info.icon} class="tech-badge__icon" aria-hidden="true" />}
+  {svg && (
+    <svg
+      class="tech-badge__icon"
+      viewBox={svg.viewBox}
+      aria-hidden="true"
+      set:html={svg.body}
+    />
+  )}
   <span class="tech-badge__label">{label}</span>
 </span>
 

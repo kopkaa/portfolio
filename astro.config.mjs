@@ -2,13 +2,12 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
-import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jhromadka.dev',
   compressHTML: true,
-  integrations: [sitemap(), icon()],
+  integrations: [sitemap()],
 
   // Self-hosted via astro:fonts — no request to fonts.googleapis.com, no
   // render-blocking <link>, no FOUT hack. Weights are exactly what the
