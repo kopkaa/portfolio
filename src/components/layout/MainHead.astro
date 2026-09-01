@@ -12,10 +12,14 @@ interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[] | undefined;
 }
 
+/** Social preview card, 1200x630. Source: scripts/og-template.html */
+const OG_FALLBACK = "/og-default.png";
+const OG_FALLBACK_SIZE = { width: 1200, height: 630 };
+
 const {
   title = "Jan Hromádka — Full-Stack Web Developer",
   description = "Personal portfolio of Jan Hromádka, a full-stack web developer based in Ostrava, Czechia. Vue, Nuxt, Node.js, Kotlin, AWS, Terraform.",
-  ogImage = "/homepage.png",
+  ogImage = OG_FALLBACK,
   ogType = "website",
   noindex = false,
   jsonLd,
@@ -23,7 +27,14 @@ const {
 
 const siteUrl = Astro.site ?? new URL("https://jhromadka.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const ogImageUrl = new URL(ogImage, siteUrl);
+
+// Facebook, LinkedIn and X all refuse to render SVG previews, and half the
+// project logos are SVG — those pages fall back to the generic card.
+const resolvedOgImage = ogImage.endsWith(".svg") ? OG_FALLBACK : ogImage;
+const ogImageUrl = new URL(resolvedOgImage, siteUrl);
+// Only declared for the fallback, whose dimensions we actually know; a wrong
+// width/height hint is worse than none, since scrapers trust it over the file.
+const ogSize = resolvedOgImage === OG_FALLBACK ? OG_FALLBACK_SIZE : null;
 
 const defaultJsonLd: Record<string, unknown>[] = [
   {
@@ -73,6 +84,8 @@ const ldList = [...defaultJsonLd, ...extraLd];
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrl.href} />
 <meta property="og:image:alt" content={`${title} — preview`} />
+{ogSize && <meta property="og:image:width" content={String(ogSize.width)} />}
+{ogSize && <meta property="og:image:height" content={String(ogSize.height)} />}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
