@@ -28,8 +28,8 @@ const {
 const siteUrl = Astro.site ?? new URL("https://jhromadka.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
 
-// Facebook, LinkedIn and X all refuse to render SVG previews, and half the
-// project logos are SVG — those pages fall back to the generic card.
+// Safety net: Facebook, LinkedIn and X all refuse to render SVG previews,
+// so an SVG passed in here falls back to the generic card.
 const resolvedOgImage = ogImage.endsWith(".svg") ? OG_FALLBACK : ogImage;
 const ogImageUrl = new URL(resolvedOgImage, siteUrl);
 // Only declared for the fallback, whose dimensions we actually know; a wrong

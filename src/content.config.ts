@@ -25,6 +25,12 @@ export const collections = {
     schema: z.object({
       title: z.string(),
       img: z.string(),
+      // `img` is the client logo used as the grid thumbnail, not a social
+      // card: the logos are the wrong aspect ratio and some fall under the
+      // 300x157 minimum X enforces for summary_large_image. Set `ogImage`
+      // only for a purpose-built 1200x630 card; otherwise the page uses the
+      // site-wide one.
+      ogImage: z.string().optional(),
       description: z.string(),
       tags: z.array(z.string()),
       padding: z.boolean().optional(),
