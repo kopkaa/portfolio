@@ -20,6 +20,8 @@ RePilot is a Czech SaaS for landlords and property managers — properties and u
 
 <a href="https://www.repilot.cz" target="_blank" rel="noopener noreferrer">Visit the RePilot Website</a>
 
+![Utility billing wizard — recap step with the generated PDF statement](/assets/projects/repilot/billing-recap.webp)
+
 ### What I built
 
 - **Utility billing wizard** — multi-step settlement of costs, six allocation calculators (days, consumption, person-days, months, manual split…), meter readings, recap, corrective billings.
@@ -27,6 +29,9 @@ RePilot is a Czech SaaS for landlords and property managers — properties and u
 - **Admin billing console** — cross-portfolio overview, AI extraction status and history, service/repository layering.
 - **Mortgages module** — new domain module end to end: collateral tracking, floating rates, spreadsheet-style grid with inline editing.
 - **Meters** — nested meter hierarchies, drag & drop ordering, filterable tile overview, consumption pricing.
+
+![Property meters with reading-interval monitoring](/assets/projects/repilot/meters.webp)
+
 - **Tenants & finance** — redesigned tenant finance tab, rent schedule table, ARES company registry lookup & import, IBAN validation.
 - **Tasks** — task list with filters and inline check-off, Tiptap WYSIWYG comments, emoji picker, attachments.
 - **Dashboard & permissions** — stats and debt widgets, role management, per-property access matrix.
