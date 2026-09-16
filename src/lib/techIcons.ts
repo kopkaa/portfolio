@@ -35,6 +35,11 @@ const MAP: Record<string, TechIconInfo> = {
   "mysql":       { icon: "mysql",             color: "#4479A1", label: "MySQL" },
   "mongodb":     { icon: "mongodb",           color: "#47A248", label: "MongoDB" },
   "rabbitmq":    { icon: "rabbitmq",          color: "#FF6600", label: "RabbitMQ" },
+  "laravel":     { icon: "laravel",           color: "#FF2D20", label: "Laravel" },
+  "inertia.js":  { icon: "inertia",           color: "#9553E9", label: "Inertia.js" },
+  // Official #003545 disappears as a tint on the dark theme; use the brand's sea-lion accent.
+  "mariadb":     { icon: "mariadb",           color: "#C0765A", label: "MariaDB" },
+  "playwright":  { icon: "playwright",        color: "#2EAD33", label: "Playwright" },
 };
 
 const ALIASES: Record<string, string> = {
