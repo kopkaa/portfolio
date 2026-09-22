@@ -1,5 +1,5 @@
 ---
-title: RePilot
+title: Repilot
 img: /assets/projects/repilot.webp
 description: |
   Full-stack developer on a SaaS platform for rental property management.
@@ -14,11 +14,11 @@ tags:
   - Docker
 ---
 
-## Full-stack Developer at RePilot
+## Full-stack Developer at Repilot
 
-RePilot is a Czech SaaS for landlords and property managers — properties and units, tenants and lease agreements, rent schedules and debts, meters, mortgages, and the yearly settlement of service and energy costs. Laravel modular monolith (~45 domain modules) with a Vue 3 + Inertia.js + TypeScript frontend. Frontend-leaning full-stack role, with a strong focus on tests.
+Repilot is a Czech SaaS for landlords and property managers — properties and units, tenants and lease agreements, rent schedules and debts, meters, mortgages, and the yearly settlement of service and energy costs. Laravel modular monolith (~45 domain modules) with a Vue 3 + Inertia.js + TypeScript frontend. Frontend-leaning full-stack role, with a strong focus on tests.
 
-<a href="https://www.repilot.cz" target="_blank" rel="noopener noreferrer">Visit the RePilot Website</a>
+<a href="https://www.repilot.cz" target="_blank" rel="noopener noreferrer">Visit the Repilot Website</a>
 
 ![Utility billing wizard — recap step with the generated PDF statement](/assets/projects/repilot/billing-recap.webp)
 
