@@ -99,9 +99,18 @@ const ldList = [...defaultJsonLd, ...extraLd];
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" href="/icon.png" />
 
-<!-- Public Sans is the body face and paints above the fold, so it preloads.
+<!-- The hero background is the LCP element on mobile, but it's a CSS
+     background behind a custom property, so the preload scanner can't see it.
+     Mirrors --bg-image-main in BaseLayout; the theme is pinned to dark, so
+     only the dark variants are hinted. -->
+<link rel="preload" as="image" fetchpriority="high" href="/assets/backgrounds/bg-main-dark-800w.jpg" media="(max-width: 49.99em)" />
+<link rel="preload" as="image" fetchpriority="high" href="/assets/backgrounds/bg-main-dark-1440w.jpg" media="(min-width: 50em)" />
+
+<!-- Public Sans is the body face and paints above the fold, so it preloads —
+     but only the upright latin file. It's a variable font (400 and 700 share
+     it); italic and latin-ext still load on demand via unicode-range.
      Rubik only appears on /projects, so it loads normally. -->
-<Font cssVariable="--font-public-sans" preload />
+<Font cssVariable="--font-public-sans" preload={[{ style: "normal", subset: "latin" }]} />
 <Font cssVariable="--font-rubik" />
 
 {ldList.map((data) => (
