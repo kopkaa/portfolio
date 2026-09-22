@@ -1,6 +1,6 @@
 ---
 title: Sportega
-img: /assets/projects/sportega.png
+img: /assets/projects/sportega.webp
 description: |
   Fullstack Developer on a multi-tenant e-commerce platform.
 tags:

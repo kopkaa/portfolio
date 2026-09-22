@@ -1,6 +1,6 @@
 ---
 title: JavaScript
-img: /assets/tech/js.png
+img: /assets/tech/js.webp
 category: languages
 order: 2
 ---

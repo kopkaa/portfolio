@@ -1,6 +1,6 @@
 ---
 title: IceWarp
-img: /assets/projects/icewarp.png
+img: /assets/projects/icewarp.webp
 padding: true
 description: |
   Node.js Backend Developer working on microservices.

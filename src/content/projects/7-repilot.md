@@ -1,6 +1,6 @@
 ---
 title: RePilot
-img: /assets/projects/repilot.png
+img: /assets/projects/repilot.webp
 description: |
   Full-stack developer on a SaaS platform for rental property management.
 tags:

@@ -1,6 +1,6 @@
 ---
 title: AnthonyApp
-img: /assets/projects/anthony.png
+img: /assets/projects/anthony.webp
 padding: true
 description: |
   Full-stack developer
