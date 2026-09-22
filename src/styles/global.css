@@ -36,6 +36,32 @@
 	--font-rethink: sans-serif;
 }
 
+/* Metric-matched stand-ins for Public Sans while the webfont loads (see
+   astro.config.mjs). size-adjust is the measured rendered-width ratio of
+   Public Sans (latin subset) to Arial over body copy, per weight; the
+   overrides are Public Sans' ascent 1900 / descent 450 on a 2000 UPM em,
+   divided by that ratio. Liberation Sans is metric-compatible with Arial,
+   so the same numbers hold. */
+@font-face {
+	font-family: 'Public Sans Fallback';
+	src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans');
+	font-weight: 400;
+	size-adjust: 104.58%;
+	ascent-override: 90.84%;
+	descent-override: 21.51%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: 'Public Sans Fallback';
+	src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold');
+	font-weight: 700;
+	size-adjust: 107.1%;
+	ascent-override: 88.7%;
+	descent-override: 21.01%;
+	line-gap-override: 0%;
+}
+
 @keyframes fade-in-up {
 	0% {
 		opacity: 0;

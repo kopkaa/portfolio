@@ -28,7 +28,12 @@ export default defineConfig({
       subsets: ['latin', 'latin-ext'],
       weights: [400, 700],
       styles: ['normal', 'italic'],
-      fallbacks: ['sans-serif'],
+      // Astro's generated fallback reads xAvgCharWidth from whichever file it
+      // resolves first — the italic latin subset, whose value is bogus — and
+      // came out at size-adjust 169.9%, rendering fallback text ~1.87x too
+      // wide. The hand-measured face lives in global.css.
+      fallbacks: ['Public Sans Fallback', 'sans-serif'],
+      optimizedFallbacks: false,
     },
     {
       provider: fontProviders.google(),
