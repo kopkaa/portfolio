@@ -358,8 +358,9 @@
 	color: var(--gray-300);
 }
 
-.section-header h3 {
-	font-size: var(--text-2xl);
+.section-header h2 {
+	font-size: var(--text-3xl);
+	color: var(--gray-0);
 }
 
 @media (min-width: 50em) {
@@ -378,8 +379,8 @@
 		font-size: var(--text-lg);
 	}
 
-	.section-header h3 {
-		font-size: var(--text-4xl);
+	.section-header h2 {
+		font-size: var(--text-5xl);
 	}
 
 	.with-cta .section-header {
