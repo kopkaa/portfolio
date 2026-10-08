@@ -1,0 +1,111 @@
+---
+interface Props {
+  items: { value: string | number; label: string }[];
+  align?: 'start' | 'center';
+}
+
+const { items, align = 'start' } = Astro.props;
+
+// "6+" -> 6 + "+"; non-numeric values ("Full-stack") are rendered static.
+const parse = (value: string | number) => {
+  const match = String(value).match(/^(\d+)(.*)$/);
+  return match ? { count: match[1], suffix: match[2] } : null;
+};
+---
+
+<dl class:list={['stats-row', { center: align === 'center' }]}>
+  {items.map((item) => (
+    <div class="stat">
+      <dt class="stat-label">{item.label}</dt>
+      <dd class="stat-value" data-count={parse(item.value)?.count} data-suffix={parse(item.value)?.suffix}>
+        {item.value}
+      </dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 0.5rem;
+  }
+
+  .stats-row.center {
+    justify-content: center;
+  }
+
+  .stat {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.15rem;
+  }
+
+  .stat + .stat::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    width: 1px;
+    height: 2.25rem;
+    background: var(--gray-800);
+    transform: translateY(-50%);
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gray-0);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+</style>
+
+<script>
+  const DURATION = 1200;
+  const els = document.querySelectorAll<HTMLElement>('.stat-value[data-count]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animate = (el: HTMLElement) => {
+    const target = Number(el.dataset.count);
+    const suffix = el.dataset.suffix ?? '';
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / DURATION, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  // HTML keeps the final value for no-JS and crawlers; reset only when we animate.
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.unobserve(entry.target);
+          animate(entry.target as HTMLElement);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    els.forEach((el) => {
+      el.textContent = `0${el.dataset.suffix ?? ''}`;
+      observer.observe(el);
+    });
+  }
+</script>

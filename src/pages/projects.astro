@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Grid from '../components/ui/Grid.astro';
 import ProjectCard from '../components/cards/ProjectCard.astro';
+import Stats from '../components/ui/Stats.astro';
 
 const projects = await getCollection('projects');
 ---
@@ -22,22 +23,13 @@ const projects = await getCollection('projects');
         Projects I've contributed to — CRM tools, a document signing platform, cloud microservices, marketing sites.
       </p>
 
-      <div class="stats-row">
-        <div class="stat">
-          <span class="stat-value">{projects.length}</span>
-          <span class="stat-label">Projects</span>
-        </div>
-        <div class="divider" />
-        <div class="stat">
-          <span class="stat-value">6+</span>
-          <span class="stat-label">Years exp.</span>
-        </div>
-        <div class="divider" />
-        <div class="stat">
-          <span class="stat-value">Full-stack</span>
-          <span class="stat-label">Approach</span>
-        </div>
-      </div>
+      <Stats
+        items={[
+          { value: projects.length, label: 'Projects' },
+          { value: '6+', label: 'Years exp.' },
+          { value: 'Full-stack', label: 'Approach' },
+        ]}
+      />
     </header>
 
     <main>
@@ -73,40 +65,5 @@ const projects = await getCollection('projects');
     letter-spacing: -0.02em;
     line-height: 1;
     color: var(--gray-0);
-  }
-
-  .stats-row {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding-top: 0.5rem;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .stat-value {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--gray-0);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-400);
-  }
-
-  .divider {
-    width: 1px;
-    height: 2.25rem;
-    background: var(--gray-800);
-    flex-shrink: 0;
   }
 </style>

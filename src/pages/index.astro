@@ -8,6 +8,7 @@ import HeaderCard from '../components/cards/HeaderCard.astro';
 import Skills from '../components/sections/Skills.astro';
 import TechStackCard from '../components/cards/TechStackCard.astro';
 import ProjectCard from '../components/cards/ProjectCard.astro';
+import Stats from '../components/ui/Stats.astro';
 
 const stack = await getCollection('stack');
 const projects = await getCollection('projects');
@@ -119,6 +120,13 @@ const groupedStack = STACK_CATEGORIES.map((cat) => ({
         <header class="section-header flex flex-col gap-2 lg:gap-4">
           <h2>Projects</h2>
           <p>Selected work from the last few years.</p>
+          <Stats
+            align="center"
+            items={[
+              { value: projects.length, label: 'Projects' },
+              { value: '6+', label: 'Years exp.' },
+            ]}
+          />
         </header>
 
         <div class="gallery pb-8">
