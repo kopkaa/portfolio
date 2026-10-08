@@ -72,7 +72,7 @@ const parse = (value: string | number) => {
 </style>
 
 <script>
-  const DURATION = 1200;
+  const DURATION = 600;
   const els = document.querySelectorAll<HTMLElement>('.stat-value[data-count]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -83,7 +83,7 @@ const parse = (value: string | number) => {
 
     const tick = (now: number) => {
       const t = Math.min((now - start) / DURATION, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
+      const eased = 1 - (1 - t) * (1 - t);
       el.textContent = `${Math.round(target * eased)}${suffix}`;
       if (t < 1) requestAnimationFrame(tick);
     };
@@ -100,7 +100,7 @@ const parse = (value: string | number) => {
           animate(entry.target as HTMLElement);
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.1 },
     );
 
     els.forEach((el) => {
