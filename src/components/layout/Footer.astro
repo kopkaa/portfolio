@@ -21,16 +21,15 @@ import SocialLinks from "../cards/SocialLinks.astro";
         class="grid gap-7.5 justify-items-start content-start py-5 -my-5 md:gap-10 md:py-7.5 md:-my-7.5"
         id="kontakt"
       >
-        <picture>
+        <picture class="portrait-glow">
           <img
-            width="200"
-            height="300"
-            src="/assets/me-200.webp"
+            width="400"
+            height="379"
+            src="/assets/me-cutout.webp"
             alt="Jan Hromádka - front-end developer"
             decoding="async"
             loading="lazy"
-            class="block shrink-0 object-cover rounded-full size-[70px] md:size-25 bg-black md:mb-0 mb-4"
-            style="object-position: center 25%; overflow-clip-margin: unset;"
+            class="portrait block shrink-0 object-cover size-[70px] md:size-25 md:mb-0 mb-4"
           />
         </picture>
 
@@ -71,5 +70,18 @@ import SocialLinks from "../cards/SocialLinks.astro";
 <style scoped>
   a {
     color: white;
+  }
+
+  /* Cutout with no frame: an elliptical mask dissolves the shirt (bottom and
+     the straight crop edges at the shoulders) into the footer instead of
+     ending on an edge; a soft accent rim light (drop-shadow follows the
+     alpha outline) separates the silhouette from the dark background. */
+  .portrait {
+    mask-image: radial-gradient(ellipse 62% 78% at 50% 32%, #000 62%, transparent 100%);
+  }
+  /* On the parent so the glow traces the already-faded silhouette and is not
+     clipped by the img box (mask-image clips the element's own filter). */
+  .portrait-glow {
+    filter: drop-shadow(0 0 6px rgb(175 67 190 / 0.55));
   }
 </style>
